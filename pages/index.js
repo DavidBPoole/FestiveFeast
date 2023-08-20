@@ -4,7 +4,7 @@
 // import { Button } from 'react-bootstrap';
 import Head from 'next/head';
 
-function Home() {
+export default function Home() {
   // const router = useRouter();
   return (
     <>
@@ -18,4 +18,4 @@ function Home() {
   );
 }
 
-export default Home;
+// export default Home;
