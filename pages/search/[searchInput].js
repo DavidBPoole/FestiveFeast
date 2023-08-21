@@ -1,0 +1,43 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+// import { useRouter } from 'next/router';
+// import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+// import { getAllProducts } from '../../api/productData'; // Replace with your product data fetching function
+// import { useAuth } from '../../utils/context/authContext';
+
+export default function SearchResult() {
+  // const [searchResults, setSearchResults] = useState([]);
+  //   const { user } = useAuth();
+  // const router = useRouter();
+  // const { searchInput } = router.query;
+
+  //   const getSearchResults = () => {
+  //     getAllEvents(user.uid).then((searchResultsArray) => {
+  //       const filterResults = searchResultsArray.filter((event) => event.title.toLowerCase().includes(searchInput)
+  //         || event.description.toLowerCase().includes(searchInput));
+  //       setSearchResults(filterResults);
+  //     });
+  //   };
+
+  //   useEffect(() => {
+  //     getSearchResults();
+  //     return () => {
+  //       setSearchResults([]);
+  //     };
+  //   }, [searchInput]);
+
+  return (
+    <div>
+      <Head>
+        <title>Search</title>
+      </Head>
+      <h4 className="pageheaderflexwrap">Here are the results...</h4>
+      {/* <div className="productcardcontainer">
+        {searchResults.length === 0 ? (<h5 className="pageheaderflexwrap">No items found</h5>)
+          : (searchResults.map((product) => (
+            <ShoeCard key={product.id} shoeObj={product} onUpdate={getSearchResults} />
+          )))}
+      </div> */}
+    </div>
+  );
+}
