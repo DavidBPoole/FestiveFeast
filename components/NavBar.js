@@ -19,10 +19,9 @@ export default function NavBar() {
       <Container id="feetfirst-nav">
         <Container id="nav-left" className="nav-spacing nav-outer">
           <Link passHref href="/">
-            {/* {replace with my own logo here} */}
             <Navbar.Brand>
-              <h2>Festive Feast</h2>
-              {/* <img src="/logoNoBG.png" width="70%" height="90%" alt="icon" className="nav-logo" /> */}
+              {/* <h2>Festive Feast</h2> */}
+              <img src="/FestiveFeastLogo.png" width="70%" height="90%" alt="icon" className="nav-logo" />
             </Navbar.Brand>
           </Link>
         </Container>
