@@ -16,7 +16,7 @@ export default function EventCard({ eventObj }) {
         <Card.Title>{eventObj.event_name}</Card.Title>
         <Card.Text>{eventObj.event_desc}</Card.Text>
         {/* DYNAMIC LINK TO VIEW THE EVENT DETAILS  */}
-        <Link href={`/events/${eventObj}`} passHref>
+        <Link href={`/events/${eventObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO JOIN THE EVENT DETAILS  */}
@@ -34,6 +34,7 @@ export default function EventCard({ eventObj }) {
 EventCard.propTypes = {
   // eslint-disable-next-line react/require-default-props
   eventObj: PropTypes.shape({
+    firebaseKey: PropTypes.string,
     event_name: PropTypes.string,
     event_desc: PropTypes.string,
   }),
