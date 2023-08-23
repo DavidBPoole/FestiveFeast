@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import EventCard from '../components/EventCard';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
+import EventCard from '../components/cards/EventCard';
 import { getEvents } from '../api/eventData';
 
 export default function ShowEvents() {
@@ -20,6 +22,10 @@ export default function ShowEvents() {
       <Head>
         <title>Events</title>
       </Head>
+      <div><h2>This is where the events will go.</h2></div>
+      <Link href="/events/new" passHref>
+        <Button>Add Event</Button>
+      </Link>
       <div className="d-flex flex-wrap events-desc-text">
         {events.map((event) => (
           <EventCard
@@ -28,7 +34,6 @@ export default function ShowEvents() {
             onUpdate={getAllEvents}
           />
         ))}
-        <h3>This is where the events will go.</h3>
       </div>
       <div>
         <EventCard />
