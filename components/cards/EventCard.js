@@ -46,6 +46,7 @@ EventCard.propTypes = {
   eventObj: PropTypes.shape({
     event_name: PropTypes.string,
     event_desc: PropTypes.string,
+    event_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
   // .isRequired,

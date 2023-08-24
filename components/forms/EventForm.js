@@ -10,17 +10,11 @@ import { createEvent, updateEvent } from '../../api/eventData';
 const initialState = {
   event_name: '',
   event_theme: '',
-  event_desc: '',
+  event_location: '',
   event_date: '',
   event_time: '',
-  event_location: '',
-  event_size: '',
-  age_limit: '',
+  event_desc: '',
   food_sensitivities: '',
-  food_type: '',
-  rsvp_date: '',
-  image: '',
-  private: false,
 };
 
 function EventForm({ obj }) {
@@ -50,7 +44,7 @@ function EventForm({ obj }) {
       createEvent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateEvent(patchPayload).then(() => {
-          router.push('/');
+          router.push('/events');
         });
       });
     }
@@ -79,12 +73,12 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Description" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Event Location" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter event description"
-          name="event_desc"
-          value={formInput.event_desc}
+          placeholder="Enter event location"
+          name="event_location"
+          value={formInput.event_location}
           onChange={handleChange}
           required
         />
@@ -109,22 +103,12 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Location" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Event Description" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter event location"
-          name="event_location"
-          value={formInput.event_location}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Age Limit" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter age requirements"
-          name="age_limit"
-          value={formInput.age_limit}
+          placeholder="Enter event description"
+          name="event_desc"
+          value={formInput.event_desc}
           onChange={handleChange}
           required
         />
@@ -139,27 +123,6 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Food Type" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter food type"
-          name="food_type"
-          value={formInput.food_type}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="RSVP Date" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter rsvp by date"
-          name="rsvp_date"
-          value={formInput.rsvp_date}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Event</Button>
     </Form>

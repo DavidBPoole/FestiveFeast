@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import SupplyCard from '../../components/cards/SupplyCard';
 import { viewEventDetails } from '../../api/mergedData';
 
-export default function ViewEvent() {
+function ViewEvent() {
   const [eventDetails, setEventDetails] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -42,3 +42,5 @@ export default function ViewEvent() {
     </>
   );
 }
+
+export default ViewEvent;

@@ -31,8 +31,4 @@ const deleteEventSupplies = (eventId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export {
-  viewSupplyDetails,
-  viewEventDetails,
-  deleteEventSupplies
-};
+export { viewSupplyDetails, viewEventDetails, deleteEventSupplies };
