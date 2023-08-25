@@ -12,7 +12,7 @@ export default function EventCard({ eventObj, onUpdate }) {
   }
 
   const deleteThisEvent = () => {
-    if (window.confirm(`Delete ${eventObj.event_name}?`)) {
+    if (window.confirm(`Delete ${eventObj.eventName}?`)) {
       deleteEventSupplies(eventObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -20,16 +20,17 @@ export default function EventCard({ eventObj, onUpdate }) {
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
-        <Card.Title>{eventObj.event_name}</Card.Title>
-        <Card.Text>{eventObj.event_desc}</Card.Text>
+        <Card.Img variant="top" src={eventObj.eventImage} alt={eventObj.eventName} style={{ height: '400px' }} />
+        <Card.Title>{eventObj.eventName}</Card.Title>
+        <Card.Text>{eventObj.eventLocation}</Card.Text>
         {/* DYNAMIC VS FILE LINK TO VIEW EVENT DETAILS  */}
         <Link href={`/events/${eventObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO JOIN THE EVENT DETAILS  */}
-        {/* <Link href={`/events/join/${eventObj}`} passHref>
+        <Link href={`/events/edit/${eventObj}`} passHref>
           <Button variant="info">EDIT</Button>
-        </Link> */}
+        </Link>
         <Button variant="warning" className="m-2">
           JOIN
         </Button>
@@ -44,11 +45,11 @@ export default function EventCard({ eventObj, onUpdate }) {
 EventCard.propTypes = {
   // eslint-disable-next-line react/require-default-props
   eventObj: PropTypes.shape({
-    event_name: PropTypes.string,
-    event_desc: PropTypes.string,
-    event_id: PropTypes.string,
+    eventImage: PropTypes.string,
+    eventName: PropTypes.string,
+    eventLocation: PropTypes.string,
+    eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
-  }),
-  // .isRequired,
+  }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

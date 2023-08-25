@@ -8,13 +8,18 @@ import { useAuth } from '../../utils/context/authContext';
 import { createEvent, updateEvent } from '../../api/eventData';
 
 const initialState = {
-  event_name: '',
-  event_theme: '',
-  event_location: '',
-  event_date: '',
-  event_time: '',
-  event_desc: '',
-  food_sensitivities: '',
+  eventImage: '',
+  eventName: '',
+  eventTheme: '',
+  eventTime: '',
+  eventDate: '',
+  rsvpDate: '',
+  eventLocation: '',
+  mealType: '',
+  eventItems: '',
+  sensitivities: '',
+  eventDesc: '',
+  firebaseKey: '',
 };
 
 function EventForm({ obj }) {
@@ -53,62 +58,92 @@ function EventForm({ obj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Event </h2>
-      <FloatingLabel controlId="floatingInput1" label="Event" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Event Image URL" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Event URL Image"
+          name="eventImage"
+          value={formInput.eventImage}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter event name"
-          name="event_name"
-          value={formInput.event_name}
+          name="eventName"
+          value={formInput.eventName}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Theme" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Theme" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter event theme"
-          name="event_theme"
-          value={formInput.event_theme}
+          name="eventTheme"
+          value={formInput.eventTheme}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Location" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Location" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter event location"
-          name="event_location"
-          value={formInput.event_location}
+          name="eventLocation"
+          value={formInput.eventLocation}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Date" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter event date"
-          name="event_date"
-          value={formInput.event_date}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Time" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Time" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter event time"
-          name="event_time"
-          value={formInput.event_time}
+          name="eventTime"
+          value={formInput.eventTime}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="Event Description" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Date" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter event description"
-          name="event_desc"
-          value={formInput.event_desc}
+          placeholder="Enter event date"
+          name="eventDate"
+          value={formInput.eventDate}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="RSVP By Date" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="RSVP by date"
+          name="rsvpDate"
+          value={formInput.rsvpDate}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Meal Type" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Meal type"
+          name="mealType"
+          value={formInput.mealType}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Food or Items Needed" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Items required"
+          name="eventItems"
+          value={formInput.eventItems}
           onChange={handleChange}
           required
         />
@@ -116,9 +151,19 @@ function EventForm({ obj }) {
       <FloatingLabel controlId="floatingInput2" label="Food Sensitivities" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter food sensititivies or put none"
-          name="food_sensitivities"
-          value={formInput.food_sensitivities}
+          placeholder="Food sensitivities"
+          name="sensitivities"
+          value={formInput.sensitivities}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Event Description" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Event description"
+          name="eventDesc"
+          value={formInput.eventDesc}
           onChange={handleChange}
           required
         />
@@ -131,17 +176,17 @@ function EventForm({ obj }) {
 
 EventForm.propTypes = {
   obj: PropTypes.shape({
-    event_name: PropTypes.string,
-    event_theme: PropTypes.string,
-    event_desc: PropTypes.string,
-    event_date: PropTypes.string,
-    event_time: PropTypes.string,
-    event_location: PropTypes.string,
-    event_size: PropTypes.string,
-    age_limit: PropTypes.string,
-    food_sensitivities: PropTypes.string,
-    food_type: PropTypes.string,
-    rsvp_date: PropTypes.string,
+    eventImage: PropTypes.string,
+    eventName: PropTypes.string,
+    eventTheme: PropTypes.string,
+    eventTime: PropTypes.string,
+    eventDate: PropTypes.string,
+    rsvpDate: PropTypes.string,
+    eventLocation: PropTypes.string,
+    mealType: PropTypes.string,
+    eventItems: PropTypes.string,
+    sensitivities: PropTypes.string,
+    eventDesc: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };

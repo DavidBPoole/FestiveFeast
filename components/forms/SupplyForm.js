@@ -9,11 +9,12 @@ import { getEvents } from '../../api/eventData';
 import { createSupply, updateSupply } from '../../api/supplyData';
 
 const initialState = {
-  supply_name: '',
-  supply_category: '',
-  supply_type: '',
-  supply_amount: '',
-  event_id: '',
+  supplyImage: '',
+  supplyName: '',
+  supplyCategory: '',
+  supplyAmount: '',
+  supplyDesc: '',
+  eventId: '',
   firebaseKey: '',
 };
 function SupplyForm({ supplyObj }) {
@@ -54,50 +55,47 @@ function SupplyForm({ supplyObj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
-
-      {/* NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Supply Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Supply/Food Image URL" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Supply URL Image"
+          name="supplyImage"
+          value={formInput.supplyImage}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      {/* SUPPLY NAME INPUT  */}
+      <FloatingLabel controlId="floatingInput1" label="Supply/Food Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter supply name"
-          name="name"
-          value={formInput.supply_name}
+          placeholder="Enter supply/food name"
+          name="supplyName"
+          value={formInput.supplyName}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      {/* CATEGORY INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Supply Category" className="mb-3">
+      {/* SUPPLY/FOOD CATEGORY INPUT  */}
+      <FloatingLabel controlId="floatingInput2" label="Supply/Food Category" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter supply category"
-          name="text"
-          value={formInput.supply_category}
+          placeholder="Enter supply/food category"
+          name="supplyCategory"
+          value={formInput.supplyCategory}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
 
-      {/* SUPPLY TYPE INPUT */}
-      <FloatingLabel controlId="floatingInput2" label="Supply Type" className="mb-3">
+      {/* SUPPLY/FOOD AMOUNT INPUT  */}
+      <FloatingLabel controlId="floatingInput3" label="Supply/Food Amount" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Enter supply type"
-          name="type"
-          value={formInput.supply_type}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      {/* SUPPLY AMOUNT INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Supply Amount" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter amount"
-          name="amount"
-          value={formInput.supply_amount}
+          placeholder="Enter amount of supply/food"
+          name="supplyAmount"
+          value={formInput.supplyAmount}
           onChange={handleChange}
           required
         />
@@ -107,10 +105,10 @@ function SupplyForm({ supplyObj }) {
       <FloatingLabel controlId="floatingSelect" label="Event">
         <Form.Select
           aria-label="event"
-          name="event_id"
+          name="eventId"
           onChange={handleChange}
           className="mb-3"
-          value={formInput.event_id}
+          value={formInput.eventId}
           required
         >
           <option value="">Select an Event</option>
@@ -120,7 +118,7 @@ function SupplyForm({ supplyObj }) {
                 key={event.firebaseKey}
                 value={event.firebaseKey}
               >
-                {event.name}
+                {event.eventName}
               </option>
             ))
           }
@@ -128,13 +126,13 @@ function SupplyForm({ supplyObj }) {
       </FloatingLabel>
 
       {/* SUPPLY DESCRIPTION TEXTAREA  */}
-      <FloatingLabel controlId="floatingTextarea" label="Supply Description" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Supply/Food Description" className="mb-3">
         <Form.Control
           as="textarea"
           placeholder="Description"
           style={{ height: '100px' }}
-          name="description"
-          value={formInput.description}
+          name="supplyDesc"
+          value={formInput.supplyDesc}
           onChange={handleChange}
           required
         />
@@ -148,11 +146,11 @@ function SupplyForm({ supplyObj }) {
 
 SupplyForm.propTypes = {
   supplyObj: PropTypes.shape({
-    supply_name: PropTypes.string,
-    supply_category: PropTypes.string,
-    supply_type: PropTypes.string,
-    supply_amount: PropTypes.string,
-    event_id: PropTypes.string,
+    supplyImage: PropTypes.string,
+    supplyName: PropTypes.string,
+    supplyCategory: PropTypes.string,
+    supplyAmount: PropTypes.string,
+    eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
