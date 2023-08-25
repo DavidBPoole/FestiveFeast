@@ -6,7 +6,7 @@ import { getSingleEvent, deleteSingleEvent } from './eventData';
 const viewSupplyDetails = (supplyFirebaseKey) => new Promise((resolve, reject) => {
   getSingleSupply(supplyFirebaseKey)
     .then((supplyObject) => {
-      getSingleEvent(supplyObject.event_id)
+      getSingleEvent(supplyObject.eventId)
         .then((eventObject) => {
           resolve({ eventObject, ...supplyObject });
         });

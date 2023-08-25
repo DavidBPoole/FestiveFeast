@@ -78,7 +78,7 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
 
 // GET A SINGLE EVENT'S SUPPLIES
 const getEventSupplies = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/supplies.json?orderBy="event_id"&equalTo="${firebaseKey}"`, {
+  fetch(`${endpoint}/supplies.json?orderBy="eventId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

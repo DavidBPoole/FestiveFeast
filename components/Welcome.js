@@ -7,17 +7,17 @@ export default function Welcome() {
     <>
       <div className="welcome-banner">
         {/* Welcome! */}
+        {/* Consider BrushSCript BT for font theme */}
       </div>
       <div className="carousel-banners">
         <Carousel fade>
-          <Carousel.Item interval={7000}>
+          {/* <Carousel.Item interval={7000}>
             <Image className="welcomeGalleryImage" src="/buffet-plate.png" width="1500" height="auto" />
             <Carousel.Caption>
-              {/* Consider BrushSCript BT for font theme */}
               <h3>WELCOME!</h3>
               <p>Food banner 1.</p>
             </Carousel.Caption>
-          </Carousel.Item>
+          </Carousel.Item> */}
           <Carousel.Item interval={7000}>
             <Image className="welcomeGalleryImage" src="/holiday-banquet.png" width="1500" height="auto" />
             <Carousel.Caption>

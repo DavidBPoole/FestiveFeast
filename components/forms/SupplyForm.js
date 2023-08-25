@@ -12,11 +12,17 @@ const initialState = {
   supplyImage: '',
   supplyName: '',
   supplyCategory: '',
+  supplyAllergens: '',
   supplyAmount: '',
   supplyDesc: '',
+  provider: '',
   eventId: '',
   firebaseKey: '',
 };
+
+// THIS IS FOR A DROPDOWN FOR FOOD CATEGORIES - POSSIBLE STRETCH GOAL
+// const categories = ['Appetizers', 'Main Course', 'Second Course', 'Sides', 'Desserts', 'Beverages', 'Snacks', 'Equipment', 'Fixtures', 'Entertainment', 'Utility'];
+
 function SupplyForm({ supplyObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [events, setEvents] = useState([]);
@@ -46,7 +52,7 @@ function SupplyForm({ supplyObj }) {
       createSupply(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateSupply(patchPayload).then(() => {
-          router.push('/');
+          router.push('/events');
         });
       });
     }
@@ -55,7 +61,7 @@ function SupplyForm({ supplyObj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
-      <FloatingLabel controlId="floatingInput1" label="Supply/Food Image URL" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Supply / Food Image URL" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Supply URL Image"
@@ -66,7 +72,7 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
       {/* SUPPLY NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Supply/Food Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Supply / Food Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter supply/food name"
@@ -78,7 +84,7 @@ function SupplyForm({ supplyObj }) {
       </FloatingLabel>
 
       {/* SUPPLY/FOOD CATEGORY INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Supply/Food Category" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter supply/food category"
@@ -89,8 +95,20 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
 
+      {/* SUPPLY/FOOD ALLERGENS INPUT  */}
+      <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Enter any allergens"
+          name="supplyAllergens"
+          value={formInput.supplyAllergens}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
       {/* SUPPLY/FOOD AMOUNT INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Supply/Food Amount" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Supply / Food Amount (lbs, oz, #)" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter amount of supply/food"
@@ -126,13 +144,24 @@ function SupplyForm({ supplyObj }) {
       </FloatingLabel>
 
       {/* SUPPLY DESCRIPTION TEXTAREA  */}
-      <FloatingLabel controlId="floatingTextarea" label="Supply/Food Description" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Supply / Food Description" className="mb-3">
         <Form.Control
           as="textarea"
-          placeholder="Description"
+          placeholder="Name of Provider"
           style={{ height: '100px' }}
           name="supplyDesc"
           value={formInput.supplyDesc}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      {/* SUPPLY PROVIDER */}
+      <FloatingLabel controlId="floatingInput3" label="Provider's Name" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Name of Provider"
+          name="provider"
+          value={formInput.provider}
           onChange={handleChange}
           required
         />
@@ -149,7 +178,9 @@ SupplyForm.propTypes = {
     supplyImage: PropTypes.string,
     supplyName: PropTypes.string,
     supplyCategory: PropTypes.string,
+    supplyAllergens: PropTypes.string,
     supplyAmount: PropTypes.string,
+    provider: PropTypes.string,
     eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),

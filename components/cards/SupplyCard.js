@@ -21,12 +21,14 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
       <Card.Img variant="top" src={supplyObj.supplyImage} alt={supplyObj.supplyName} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{supplyObj.supplyName}</Card.Title>
+        <Card.Text>{supplyObj.supplyAllergens}</Card.Text>
+        <Card.Text>{supplyObj.provider}</Card.Text>
         {/* DYNAMIC LINK TO VIEW THE CARD DETAILS  */}
         <Link href={`/supplies/${supplyObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO EDIT THE CARD DETAILS  */}
-        <Link href={`/supply/edit/${supplyObj.firebaseKey}`} passHref>
+        <Link href={`/supplies/edit/${supplyObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisSupply} className="m-2">
@@ -41,6 +43,8 @@ SupplyCard.propTypes = {
   supplyObj: PropTypes.shape({
     supplyImage: PropTypes.string,
     supplyName: PropTypes.string,
+    supplyAllergens: PropTypes.string,
+    provider: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

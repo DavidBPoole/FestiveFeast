@@ -26,6 +26,9 @@ export default function ShowEvents() {
       <Link href="/events/new" passHref>
         <Button>Add Event</Button>
       </Link>
+      <Link href="/supplies/new" passHref>
+        <Button>Add Supply</Button>
+      </Link>
       <div className="d-flex flex-wrap events-desc-text">
         {events.map((event) => (
           <EventCard

@@ -3,6 +3,8 @@
 // import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import SupplyCard from '../../components/cards/SupplyCard';
 import { viewEventDetails } from '../../api/mergedData';
 
@@ -30,15 +32,18 @@ function ViewEvent() {
             {eventDetails.eventName}
           </h5>
           <hr />
-          <p>Theme: {eventDetails.eventTheme}</p>
-          <p>Location: {eventDetails.eventLocation}</p>
-          <p>Time: {eventDetails.eventTime}</p>
-          <p>Date: {eventDetails.eventDate}</p>
-          <p>RSVP By: {eventDetails.rsvpDate}</p>
-          <p>Meal Type: {eventDetails.mealType}</p>
-          <p>Food/Items Needed: {eventDetails.eventItems}</p>
-          <p>Dietary Restrictions: {eventDetails.sensitivities}</p>
-          <p>Description: {eventDetails.eventDesc}</p>
+          <p><b>Theme:</b> {eventDetails.eventTheme}</p>
+          <p><b>Location:</b> {eventDetails.eventLocation}</p>
+          <p><b>Time:</b> {eventDetails.eventTime}</p>
+          <p><b>Date:</b> {eventDetails.eventDate}</p>
+          <p><b>RSVP By:</b> {eventDetails.rsvpDate}</p>
+          <p><b>Meal Type:</b> {eventDetails.mealType}</p>
+          <p><b>Food/Items Needed:</b> {eventDetails.eventItems}</p>
+          <p><b>Dietary Restrictions:</b> {eventDetails.sensitivities}</p>
+          <p><b>Description:</b> {eventDetails.eventDesc}</p>
+          <Link passHref href="/events/">
+            <Button variant="dark">Back to Events</Button>
+          </Link>
         </div>
       </div>
       <hr />

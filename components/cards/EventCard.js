@@ -28,7 +28,7 @@ export default function EventCard({ eventObj, onUpdate }) {
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         {/* DYNAMIC LINK TO JOIN THE EVENT DETAILS  */}
-        <Link href={`/events/edit/${eventObj}`} passHref>
+        <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="warning" className="m-2">

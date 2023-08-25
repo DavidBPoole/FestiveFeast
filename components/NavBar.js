@@ -35,9 +35,9 @@ export default function NavBar() {
               <Link passHref href="/events">
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Events</Nav.Link>
               </Link>
-              <Link passHref href="/supplies">
+              {/* <Link passHref href="/supplies">
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Supplies</Nav.Link>
-              </Link>
+              </Link> */}
               {/* <Link passHref href="/favorites">
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Community</Nav.Link>
               </Link> */}

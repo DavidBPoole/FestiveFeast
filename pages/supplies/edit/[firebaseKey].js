@@ -16,5 +16,5 @@ export default function EditSupply() {
   }, [firebaseKey]);
 
   // PASS OBJECT TO FORM
-  return (<SupplyForm obj={editSupplyItem} />);
+  return (<SupplyForm supplyObj={editSupplyItem} />);
 }

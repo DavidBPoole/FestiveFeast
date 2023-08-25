@@ -1,12 +1,11 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable consistent-return */
 import { clientCredentials } from '../utils/client';
+// API CALLS FOR SUPPLIES
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET SUPPLIES BY UID
-const getSupplies = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/supplies.json?orderBy="uid"&equalTo="${uid}"`, {
+// GET SUPPLIES
+const getSupplies = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/supplies.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -79,7 +78,7 @@ const updateSupply = (payload) => new Promise((resolve, reject) => {
 
 // GET SUPPLIES BY EVENT
 const getSuppliesByEvent = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/supplies.json?orderBy="event_id"&equalTo="${firebaseKey}"`, {
+  fetch(`${endpoint}/supplies.json?orderBy="eventId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -96,5 +95,5 @@ export {
   getSingleSupply,
   createSupply,
   updateSupply,
-  getSuppliesByEvent
+  getSuppliesByEvent,
 };
