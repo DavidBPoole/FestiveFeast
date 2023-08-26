@@ -43,7 +43,6 @@ export default function EventCard({ eventObj, onUpdate }) {
 }
 
 EventCard.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   eventObj: PropTypes.shape({
     eventImage: PropTypes.string,
     eventName: PropTypes.string,

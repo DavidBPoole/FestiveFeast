@@ -18,37 +18,88 @@ const initialState = {
   provider: '',
   eventId: '',
   firebaseKey: '',
+  selectedAllergens: [],
 };
 
-// THIS IS FOR A DROPDOWN FOR FOOD CATEGORIES - POSSIBLE STRETCH GOAL
-// const categories = ['Appetizers', 'Main Course', 'Second Course', 'Sides', 'Desserts', 'Beverages', 'Snacks', 'Equipment', 'Fixtures', 'Entertainment', 'Utility'];
+const categories = ['Appetizer', 'Entree', 'Soup', 'Salad', 'Dessert', 'Beverage', 'Main Course', 'Side', 'Equipment', 'Fixtures', 'Entertainment', 'Utility'];
 
 function SupplyForm({ supplyObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [events, setEvents] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    getEvents(user.uid).then(setEvents);
+    const isMounted = true;
 
-    if (supplyObj.firebaseKey) setFormInput(supplyObj);
+    // eslint-disable-next-line no-shadow
+    getEvents(user.uid).then((events) => {
+      if (isMounted) {
+        setEvents(events);
+      }
+    });
+    if (supplyObj.firebaseKey) {
+      setFormInput(supplyObj);
+    }
+
+    return () => {
+      // eslint-disable-next-line no-const-assign
+      isMounted = false;
+    };
   }, [supplyObj, user.uid]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormInput((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setSelectedCategory(e.target.value);
+    const {
+      name, value, type, checked,
+    } = e.target;
+    if (type === 'checkbox') {
+      if (checked) {
+        setFormInput((prevState) => ({
+          ...prevState,
+          selectedAllergens: [...prevState.selectedAllergens, value],
+        }));
+      } else {
+        setFormInput((prevState) => ({
+          ...prevState,
+          selectedAllergens: prevState.selectedAllergens.filter((allergen) => allergen !== value),
+        }));
+      }
+    } else {
+      setFormInput((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (supplyObj.firebaseKey) {
+  //     updateSupply(formInput).then(() => router.push(`/supplies/${supplyObj.firebaseKey}`));
+  //   } else {
+  //     const payload = { ...formInput, uid: user.uid };
+  //     createSupply(payload).then(({ name }) => {
+  //       const patchPayload = { firebaseKey: name };
+  //       updateSupply(patchPayload).then(() => {
+  //         router.push('/events');
+  //       });
+  //     });
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const payload = {
+      ...formInput,
+      uid: user.uid,
+      supplyAllergens: formInput.selectedAllergens.join(', '), // Convert array to comma-separated string
+      supplyCategory: selectedCategory, // Include selected category
+    };
+
     if (supplyObj.firebaseKey) {
-      updateSupply(formInput).then(() => router.push(`/supplies/${supplyObj.firebaseKey}`));
+      updateSupply(payload).then(() => router.push(`/supplies/${supplyObj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
       createSupply(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateSupply(patchPayload).then(() => {
@@ -83,7 +134,7 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
 
-      {/* SUPPLY/FOOD CATEGORY INPUT  */}
+      {/* SUPPLY/FOOD CATEGORY INPUT
       <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
         <Form.Control
           type="text"
@@ -93,10 +144,27 @@ function SupplyForm({ supplyObj }) {
           onChange={handleChange}
           required
         />
+      </FloatingLabel> */}
+
+      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
+        <Form.Select
+          aria-label="Supply/Food Category"
+          name="supplyCategory"
+          onChange={handleChange}
+          value={selectedCategory}
+          required
+        >
+          <option value="">Select a category</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </Form.Select>
       </FloatingLabel>
 
       {/* SUPPLY/FOOD ALLERGENS INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
+      {/* <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter any allergens"
@@ -105,6 +173,87 @@ function SupplyForm({ supplyObj }) {
           onChange={handleChange}
           required
         />
+      </FloatingLabel> */}
+
+      <p>Allergens (if applicable)</p>
+      <FloatingLabel controlId="floatingInput2" label="" className="mb-3">
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Dairy"
+              checked={formInput.selectedAllergens.includes('Dairy')}
+              onChange={handleChange}
+            /> Dairy
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Egg"
+              checked={formInput.selectedAllergens.includes('Egg')}
+              onChange={handleChange}
+            /> Egg
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Fish"
+              checked={formInput.selectedAllergens.includes('Fish')}
+              onChange={handleChange}
+            /> Fish
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Shellfish"
+              checked={formInput.selectedAllergens.includes('Shellfish')}
+              onChange={handleChange}
+            /> Shellfish
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Nuts"
+              checked={formInput.selectedAllergens.includes('Nuts')}
+              onChange={handleChange}
+            /> Nuts
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Wheat/Gluten"
+              checked={formInput.selectedAllergens.includes('Wheat/Gluten')}
+              onChange={handleChange}
+            /> Wheat/Gluten
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="Soy"
+              checked={formInput.selectedAllergens.includes('Soy')}
+              onChange={handleChange}
+            /> Soy
+          </label>
+        </div>
       </FloatingLabel>
 
       {/* SUPPLY/FOOD AMOUNT INPUT  */}
@@ -183,6 +332,7 @@ SupplyForm.propTypes = {
     provider: PropTypes.string,
     eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
+    selectedAllergens: PropTypes.string,
   }),
 };
 

@@ -10,7 +10,7 @@ export default function Profile() {
         <title>Profile</title>
       </Head>
       <div className="profile-desc-text">
-        {/* <h3>This is where the profile page contents will go.</h3> */}
+        <h3>This is where the user profile page contents will go.</h3>
       </div>
       <div>
         <Welcome />

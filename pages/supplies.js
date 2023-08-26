@@ -4,16 +4,22 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import SupplyCard from '../components/cards/SupplyCard';
 import { getSupplies } from '../api/supplyData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ShowSupplies() {
   const [supplies, setSupplies] = useState([]);
   // const router = useRouter();
+
+  // GET USER IS USING useAuth HOOK
+  const { user } = useAuth();
+  console.warn(user);
 
   const getAllSupplies = () => {
     getSupplies().then(setSupplies);
   };
 
   useEffect(() => {
+    document.title = 'Supplies';
     getAllSupplies();
   }, []);
 
@@ -30,14 +36,14 @@ export default function ShowSupplies() {
         {supplies.map((supply) => (
           <SupplyCard
             key={supply.firebaseKey}
-            eventObj={supply}
+            supplyObj={supply}
             onUpdate={getAllSupplies}
           />
         ))}
       </div>
-      <div>
+      {/* <div>
         <SupplyCard />
-      </div>
+      </div> */}
     </>
   );
 }

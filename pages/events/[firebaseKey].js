@@ -47,6 +47,9 @@ function ViewEvent() {
         </div>
       </div>
       <hr />
+      <Link href="/supplies/new" passHref>
+        <Button>Add Supply</Button>
+      </Link>
       <div className="d-flex flex-wrap">
         {eventDetails.supplies?.map((supply) => (
           <SupplyCard key={supply.firebaseKey} supplyObj={supply} onUpdate={showEventDetails} />

@@ -21,6 +21,10 @@ body {
   background-color: whitesmoke;
 }
 
+#returnArrow {
+  color: white;
+}
+
 /* START Experimental navbar styling for spacing */
 
 #feetfirst-nav-outer {
