@@ -38,9 +38,6 @@ export default function ShowEvents() {
           />
         ))}
       </div>
-      <div>
-        <EventCard />
-      </div>
     </>
   );
 }

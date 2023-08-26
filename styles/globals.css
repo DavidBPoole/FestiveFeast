@@ -21,6 +21,14 @@ body {
   background-color: whitesmoke;
 }
 
+.signin-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35%;
+  /* width: 150%;
+  height: auto; */
+}
+
 /* START Experimental navbar styling for spacing */
 
 #feetfirst-nav-outer {

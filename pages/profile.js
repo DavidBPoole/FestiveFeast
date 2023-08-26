@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { Button } from 'react-bootstrap';
 import UserProfile from '../components/User';
 import Welcome from '../components/Welcome';
+import { signOut } from '../utils/auth';
 
 export default function Profile() {
   // const router = useRouter();
@@ -20,6 +22,9 @@ export default function Profile() {
       </div>
       <div>
         <UserProfile />
+        <Button variant="outline-dark" onClick={signOut} style={{ fontFamily: 'Crimson Text', fontSize: 18 }}>
+          Sign Out
+        </Button>
       </div>
     </>
   );
