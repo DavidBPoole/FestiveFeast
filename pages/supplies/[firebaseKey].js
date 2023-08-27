@@ -21,7 +21,7 @@ export default function ViewSupply() {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-        <img src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ width: '300px' }} />
+        <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ width: '300px' }} />
       </div>
       <div className="text-black ms-5 details">
         <h5>
@@ -36,6 +36,11 @@ export default function ViewSupply() {
         {/* CHANGE THIS NEXT LINE TO LINK BACK TO RECENT EVENT PAGE BASED ON FIREBASEKEY IF POSSIBLE */}
         <Link passHref href="/events/">
           <Button variant="dark">Back to Events</Button>
+        </Link>
+        &nbsp;
+        &nbsp;
+        <Link passHref href="/supplies/">
+          <Button variant="dark">Back to Supplies</Button>
         </Link>
         {/* SEE IF WE CAN EDIT AND DELETE ITEMS FROM HERE */}
         {/* <Link href={`/supplies/edit/${supplyObj.firebaseKey}`} passHref>

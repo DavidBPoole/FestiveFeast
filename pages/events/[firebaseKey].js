@@ -25,7 +25,7 @@ function ViewEvent() {
     <>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column">
-          <img src={eventDetails.eventImage} alt={eventDetails.eventName} style={{ width: 'auto' }} />
+          <img className="event-img" src={eventDetails.eventImage} alt={eventDetails.eventName} style={{ width: 'auto' }} />
         </div>
         <div className="text-black ms-5 details">
           <h5>
@@ -50,6 +50,8 @@ function ViewEvent() {
       <Link href="/supplies/new" passHref>
         <Button>Add Supply</Button>
       </Link>
+      &nbsp;
+      <Button variant="warning">Categories Filter Dropdown (STRETCH)</Button>
       <div className="d-flex flex-wrap">
         {eventDetails.supplies?.map((supply) => (
           <SupplyCard key={supply.firebaseKey} supplyObj={supply} onUpdate={showEventDetails} />

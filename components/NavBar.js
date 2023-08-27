@@ -39,7 +39,7 @@ export default function NavBar() {
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Supplies</Nav.Link>
               </Link>
               {/* <Link passHref href="/favorites">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Community</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Community STRETCH</Nav.Link>
               </Link> */}
               <Link passHref href="/myEvents">
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>My Events</Nav.Link>
@@ -48,7 +48,7 @@ export default function NavBar() {
                 <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Profile</Nav.Link>
               </Link>
               {/* <Link passHref href="/profile">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Messages</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Messages STRETCH</Nav.Link>
               </Link> */}
             </Nav>
           </Navbar.Collapse>

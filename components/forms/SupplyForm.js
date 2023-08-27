@@ -18,7 +18,7 @@ const initialState = {
   provider: '',
   eventId: '',
   firebaseKey: '',
-  selectedAllergens: [],
+  selectedAllergens: [''],
 };
 
 const categories = ['Appetizer', 'Entree', 'Soup', 'Salad', 'Dessert', 'Beverage', 'Main Course', 'Side', 'Equipment', 'Fixtures', 'Entertainment', 'Utility'];
@@ -39,8 +39,10 @@ function SupplyForm({ supplyObj }) {
         setEvents(events);
       }
     });
+    // This prevents edit form from defaulting to initial values.
     if (supplyObj.firebaseKey) {
       setFormInput(supplyObj);
+      setSelectedCategory(supplyObj.supplyCategory);
     }
 
     return () => {
@@ -49,8 +51,11 @@ function SupplyForm({ supplyObj }) {
     };
   }, [supplyObj, user.uid]);
 
-  const handleChange = (e) => {
+  const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
+  };
+
+  const handleChange = (e) => {
     const {
       name, value, type, checked,
     } = e.target;
@@ -73,6 +78,7 @@ function SupplyForm({ supplyObj }) {
       }));
     }
   };
+  // handSubmit before adding category dropdown and allergen checkboxes
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   if (supplyObj.firebaseKey) {
@@ -93,7 +99,7 @@ function SupplyForm({ supplyObj }) {
     const payload = {
       ...formInput,
       uid: user.uid,
-      supplyAllergens: formInput.selectedAllergens.join(', '), // Convert array to comma-separated string
+      supplyAllergens: formInput.selectedAllergens.join(' '), // Convert array to comma-separated string
       supplyCategory: selectedCategory, // Include selected category
     };
 
@@ -112,45 +118,36 @@ function SupplyForm({ supplyObj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
-      <FloatingLabel controlId="floatingInput1" label="Supply / Food Image URL" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Supply URL Image"
-          name="supplyImage"
-          value={formInput.supplyImage}
+
+      {/* EVENT SELECT  */}
+      <FloatingLabel controlId="floatingSelect" label="Event">
+        <Form.Select
+          aria-label="event"
+          name="eventId"
           onChange={handleChange}
+          className="mb-3"
+          value={formInput.eventId}
           required
-        />
-      </FloatingLabel>
-      {/* SUPPLY NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Supply / Food Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter supply/food name"
-          name="supplyName"
-          value={formInput.supplyName}
-          onChange={handleChange}
-          required
-        />
+        >
+          <option value="">Select an Event</option>
+          {
+            events.map((event) => (
+              <option
+                key={event.firebaseKey}
+                value={event.firebaseKey}
+              >
+                {event.eventName}
+              </option>
+            ))
+          }
+        </Form.Select>
       </FloatingLabel>
 
-      {/* SUPPLY/FOOD CATEGORY INPUT
-      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter supply/food category"
-          name="supplyCategory"
-          value={formInput.supplyCategory}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
-
-      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Category" className="mb-3">
         <Form.Select
           aria-label="Supply/Food Category"
           name="supplyCategory"
-          onChange={handleChange}
+          onChange={handleCategoryChange}
           value={selectedCategory}
           required
         >
@@ -163,8 +160,54 @@ function SupplyForm({ supplyObj }) {
         </Form.Select>
       </FloatingLabel>
 
-      {/* SUPPLY/FOOD ALLERGENS INPUT  */}
-      {/* <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
+      {/* SUPPLY NAME INPUT  */}
+      <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Enter supply/food name"
+          name="supplyName"
+          value={formInput.supplyName}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
+      <FloatingLabel controlId="floatingInput1" label="Image URL" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Supply URL Image"
+          name="supplyImage"
+          value={formInput.supplyImage}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
+      {/* SUPPLY/FOOD AMOUNT INPUT  */}
+      <FloatingLabel controlId="floatingInput3" label="Amount (#. lbs, oz)" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Enter amount of supply/food"
+          name="supplyAmount"
+          value={formInput.supplyAmount}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
+      {/* SUPPLY/FOOD CATEGORY INPUT (BASIC)
+      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Enter supply/food category"
+          name="supplyCategory"
+          value={formInput.supplyCategory}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel> */}
+
+      {/* SUPPLY/FOOD ALLERGENS INPUT (BASIC)
+       <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter any allergens"
@@ -175,9 +218,31 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel> */}
 
-      <p>Allergens (if applicable)</p>
+      <p>Allergens: </p>
       <FloatingLabel controlId="floatingInput2" label="" className="mb-3">
         <div>
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="N/A"
+              checked={formInput.selectedAllergens.includes('N/A')}
+              onChange={handleChange}
+            /> N/A
+          </label>
+          &nbsp;
+          &nbsp;
+          <label>
+            <input
+              type="checkbox"
+              name="allergen"
+              value="None"
+              checked={formInput.selectedAllergens.includes('None')}
+              onChange={handleChange}
+            /> None
+          </label>
+          &nbsp;
+          &nbsp;
           <label>
             <input
               type="checkbox"
@@ -256,47 +321,11 @@ function SupplyForm({ supplyObj }) {
         </div>
       </FloatingLabel>
 
-      {/* SUPPLY/FOOD AMOUNT INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Supply / Food Amount (lbs, oz, #)" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter amount of supply/food"
-          name="supplyAmount"
-          value={formInput.supplyAmount}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      {/* EVENT SELECT  */}
-      <FloatingLabel controlId="floatingSelect" label="Event">
-        <Form.Select
-          aria-label="event"
-          name="eventId"
-          onChange={handleChange}
-          className="mb-3"
-          value={formInput.eventId}
-          required
-        >
-          <option value="">Select an Event</option>
-          {
-            events.map((event) => (
-              <option
-                key={event.firebaseKey}
-                value={event.firebaseKey}
-              >
-                {event.eventName}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </FloatingLabel>
-
       {/* SUPPLY DESCRIPTION TEXTAREA  */}
-      <FloatingLabel controlId="floatingTextarea" label="Supply / Food Description" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
         <Form.Control
           as="textarea"
-          placeholder="Name of Provider"
+          placeholder="Description"
           style={{ height: '100px' }}
           name="supplyDesc"
           value={formInput.supplyDesc}
@@ -317,7 +346,7 @@ function SupplyForm({ supplyObj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply</Button>
+      <Button type="submit">{supplyObj.firebaseKey ? 'Update' : 'Create'} Item</Button>
     </Form>
   );
 }
@@ -332,7 +361,8 @@ SupplyForm.propTypes = {
     provider: PropTypes.string,
     eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
-    selectedAllergens: PropTypes.string,
+    // eslint-disable-next-line react/forbid-prop-types
+    selectedAllergens: PropTypes.array,
   }),
 };
 

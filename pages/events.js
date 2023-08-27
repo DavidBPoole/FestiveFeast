@@ -22,13 +22,21 @@ export default function ShowEvents() {
       <Head>
         <title>Events</title>
       </Head>
-      <div><h2>This is where the events will go.</h2></div>
-      <Link href="/events/new" passHref>
-        <Button>Add Event</Button>
-      </Link>
-      <Link href="/supplies/new" passHref>
-        <Button>Add Supply</Button>
-      </Link>
+      {/* <div><h2>This is where the events will go.</h2></div> */}
+      <div className="eventButtonsContainer">
+        <div className="eventsAddEventButton">
+          <Link href="/events/new" passHref>
+            <Button variant="secondary">Add Event</Button>
+          </Link>
+        </div>
+          &nbsp;
+          &nbsp;
+        <div className="eventsAddSupplyButton">
+          <Link href="/supplies/new" passHref>
+            <Button variant="secondary">Add Supply</Button>
+          </Link>
+        </div>
+      </div>
       <div className="d-flex flex-wrap events-desc-text">
         {events.map((event) => (
           <EventCard

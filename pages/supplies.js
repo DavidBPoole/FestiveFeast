@@ -28,10 +28,14 @@ export default function ShowSupplies() {
       <Head>
         <title>Supplies</title>
       </Head>
-      <div><h2>This is where the supplies will go.</h2></div>
-      <Link href="/supplies/new" passHref>
-        <Button>Add Supply</Button>
-      </Link>
+      {/* <div><h2>This is where the supplies will go.</h2></div> */}
+      <div className="supplyButtonsContainer">
+        <div className="supplyButtons">
+          <Link href="/supplies/new" passHref>
+            <Button variant="secondary">Add Supply</Button>
+          </Link>
+        </div>
+      </div>
       <div className="d-flex flex-wrap events-desc-text">
         {supplies.map((supply) => (
           <SupplyCard
@@ -41,9 +45,6 @@ export default function ShowSupplies() {
           />
         ))}
       </div>
-      {/* <div>
-        <SupplyCard />
-      </div> */}
     </>
   );
 }

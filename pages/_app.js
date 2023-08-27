@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import NoAuth from '../components/NoAuth'; // TODO: COMMENT OUT FOR AUTH
+// import NoAuth from '../components/NoAuth'; // COMMENT OUT FOR AUTH
 import '../styles/globals.css';
-import { AuthProvider } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
-import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector'; // TODO: COMMENT IN FOR AUTH
+import { AuthProvider } from '../utils/context/authContext'; // COMMENT IN FOR AUTH
+import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector'; // COMMENT IN FOR AUTH
 
 function MyApp({ Component, pageProps }) {
   return (

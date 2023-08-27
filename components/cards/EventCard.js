@@ -18,24 +18,24 @@ export default function EventCard({ eventObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
-        <Card.Img variant="top" src={eventObj.eventImage} alt={eventObj.eventName} style={{ height: '400px' }} />
+        <Card.Img className="event-img" variant="top" src={eventObj.eventImage} alt={eventObj.eventName} style={{ height: '200px' }} />
         <Card.Title>{eventObj.eventName}</Card.Title>
         <Card.Text>{eventObj.eventLocation}</Card.Text>
         {/* DYNAMIC VS FILE LINK TO VIEW EVENT DETAILS  */}
         <Link href={`/events/${eventObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" style={{ borderRadius: 50 }} className="m-2">INFO</Button>
         </Link>
         {/* DYNAMIC LINK TO JOIN THE EVENT DETAILS  */}
         <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="info" style={{ borderRadius: 50 }}>UPDATE</Button>
         </Link>
-        <Button variant="warning" className="m-2">
-          JOIN
+        <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
+          JOIN (STRETCH)
         </Button>
-        <Button variant="danger" onClick={deleteThisEvent} className="m-2">
-          DELETE
+        <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisEvent} className="m-2">
+          REMOVE
         </Button>
       </Card.Body>
     </Card>

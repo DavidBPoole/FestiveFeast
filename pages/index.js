@@ -13,12 +13,12 @@ export default function Home() {
         <title>Home Profile</title>
       </Head>
       <div className="homepage-desc-text">
-        <h3>This is where the home/welcome page contents will go.</h3>
+        {/* <h3>This is where the home/welcome page contents will go.</h3> */}
       </div>
       <div>
         <Welcome />
       </div>
-      <h1>Home Page</h1>
+      {/* <h1>Home Page</h1> */}
     </>
   );
 }

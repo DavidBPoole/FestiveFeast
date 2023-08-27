@@ -18,7 +18,7 @@ export default function SearchBar() {
   return (
     <div>
       <Form onSubmit={handleSubmit} id="searchBar">
-        <input className="form-control" type="text" placeholder="Search..." onChange={handleChange} value={searchInput} style={{ width: '300px', height: '40px' }} />
+        <input className="form-control" type="text" placeholder="Search... (STRETCH)" onChange={handleChange} value={searchInput} style={{ width: '300px', height: '40px' }} />
       </Form>
     </div>
   );
