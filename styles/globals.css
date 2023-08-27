@@ -19,10 +19,123 @@ a {
 
 body {
   background-color: whitesmoke;
+  /* background-image: url("https://img.freepik.com/free-photo/orange-abstract-background-oil-bubble-water-wallpaper_53876-153423.jpg?w=1380&t=st=1693109493~exp=1693110093~hmac=4a132ba00a87251e5fa835f1484c77170db83c908b329d5f05efbbe34122ae7f");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
-/* START Experimental navbar styling for spacing */
+.welcomeGalleryImage {
+  border-radius: 50%;
+  max-width: 98%;
+  box-shadow: 5px 5px 10px 1px;
+}
 
+/* Positioning for Festive Feast logo on sign-in page */
+.signin-logo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 35%;
+  background-color: wheat;
+  width: 100%;
+  border-radius: 50%;
+  /* width: 150%;
+  height: auto; */
+}
+
+.copy-btn {
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 50%;
+  width: 100%;
+}
+
+/* Styling for buttons on event and supply pages at the top of the page links */
+.eventButtonsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.eventsAddEventButton {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%
+}
+
+.eventsAddSupplyButton {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%
+}
+
+.events-desc-text {
+  margin-bottom: 2%;
+}
+
+.supplyButtonsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.supplyButtons {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%
+}
+
+/* Button styling on events cards */
+#eventsCardInfoBtn {
+  box-shadow: 5px 20px 20px 20px;
+  border-radius: 10%;
+  /* max-width: 3rem; */
+}
+
+/* For resizing images within event cards */
+.event-img {
+  /* width: auto;
+  height: 40%; */
+  /* padding: 5%; */
+  border-radius: 20%;
+  box-shadow: 0px 5px 20px 5px;
+  margin-bottom: 10%
+}
+
+/* For resizing images within supply cards */
+.supply-img {
+  /* width: auto;
+  max-height: 40%; */
+  /* padding: 5%; */
+  border-radius: 15%;
+  box-shadow: 0px 5px 20px 5px;
+  margin-bottom: 10%
+}
+
+/* Affectrs color, sizing and shadows on entire event and supply cards */
+.cards {
+  /* background-color: white; */
+  box-shadow: 0px 0px 10px 0px;
+}
+
+/*  User Profile styling */
+.user-profile {
+  text-align: center;
+  margin: 3%;
+}
+
+/* .profileSignoutBtn {
+  box-shadow: 5px 5px 10px 1px;
+  max-width: 8%;
+  border-radius: 45%;
+  text-align: center;
+} */
+
+/* .profileButton {
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px 1px;
+} */
+
+
+/* START Experimental navbar styling for spacing */
 #feetfirst-nav-outer {
   height: fit-content;
   background-color: transparent;

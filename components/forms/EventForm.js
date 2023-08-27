@@ -21,7 +21,6 @@ const initialState = {
   eventDesc: '',
   firebaseKey: '',
 };
-
 function EventForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
@@ -58,16 +57,7 @@ function EventForm({ obj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Event </h2>
-      <FloatingLabel controlId="floatingInput1" label="Event Image URL" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Event URL Image"
-          name="eventImage"
-          value={formInput.eventImage}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+
       <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
         <Form.Control
           type="text"
@@ -78,6 +68,7 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
+
       <FloatingLabel controlId="floatingInput2" label="Theme" className="mb-3">
         <Form.Control
           type="text"
@@ -88,6 +79,17 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
+
+      <FloatingLabel controlId="floatingInput1" label="Event Image URL" className="mb-3">
+        <Form.Control
+          type="url"
+          placeholder="Event URL Image"
+          name="eventImage"
+          value={formInput.eventImage}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+
       <FloatingLabel controlId="floatingInput2" label="Location" className="mb-3">
         <Form.Control
           type="text"

@@ -8,7 +8,7 @@ export default function myEvents() {
         <title>My Events</title>
       </Head>
       <div className="my-events-desc-text">
-        <h3>This is where my events will go.</h3>
+        {/* <h3>This is where user-specific created events will go.</h3> */}
       </div>
     </>
   );
