@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import SupplyCard from '../components/cards/SupplyCard';
-import { getSupplies } from '../api/supplyData';
+import { getAllSupplies } from '../api/supplyData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function ShowSupplies() {
@@ -14,13 +14,13 @@ export default function ShowSupplies() {
   const { user } = useAuth();
   console.warn(user);
 
-  const getAllSupplies = () => {
-    getSupplies().then(setSupplies);
+  const getAllTheSupplies = () => {
+    getAllSupplies().then(setSupplies);
   };
 
   useEffect(() => {
     document.title = 'Supplies';
-    getAllSupplies();
+    getAllTheSupplies();
   }, []);
 
   return (
@@ -32,16 +32,20 @@ export default function ShowSupplies() {
       <div className="supplyButtonsContainer">
         <div className="supplyButtons">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary">Add Supply</Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}>Add Supply</Button>
           </Link>
         </div>
+      </div>
+      <div className="divider">
+        <h1><b>All Supplies</b></h1>
+        <hr />
       </div>
       <div className="d-flex flex-wrap events-desc-text">
         {supplies.map((supply) => (
           <SupplyCard
             key={supply.firebaseKey}
             supplyObj={supply}
-            onUpdate={getAllSupplies}
+            onUpdate={getAllTheSupplies}
           />
         ))}
       </div>

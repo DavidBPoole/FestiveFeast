@@ -12,6 +12,7 @@ import {
 import { signOut } from '../utils/auth';
 import SearchBar from './SearchBar';
 
+// MAKE SURE TO CLEAN UP CSS SELECTOR TAGS BY REMOVING REFERENCES TO FEET FIRST GROUP PROJECT *****
 export default function NavBar() {
   // const router = useRouter();
   return (
@@ -20,8 +21,8 @@ export default function NavBar() {
         <Container id="nav-left" className="nav-spacing nav-outer">
           <Link passHref href="/">
             <Navbar.Brand>
-              {/* <h2>Festive Feast</h2> */}
-              <img src="/FestiveFeastLogo.png" width="70%" height="90%" alt="icon" className="nav-logo" />
+              <span className="navlogo"><b><em>Festive Feast</em></b></span>
+              {/* <img src="/FestiveFeastLogo.png" width="90%" height="90%" alt="icon" className="nav-logo" /> */}
             </Navbar.Brand>
           </Link>
         </Container>
@@ -30,33 +31,33 @@ export default function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav id="feetfirst-nav-inner">
               <Link passHref href="/">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Home</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Home</b></Nav.Link>
               </Link>
               <Link passHref href="/events">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Events</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Events</b></Nav.Link>
               </Link>
               <Link passHref href="/supplies">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Supplies</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Supplies</b></Nav.Link>
               </Link>
               {/* <Link passHref href="/favorites">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Community STRETCH</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}>Community STRETCH</Nav.Link>
               </Link> */}
-              <Link passHref href="/myEvents">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>My Events</Nav.Link>
+              <Link passHref href="/myItems">
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>My Items</b></Nav.Link>
               </Link>
               <Link passHref href="/profile">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Profile</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Profile</b></Nav.Link>
               </Link>
               {/* <Link passHref href="/profile">
-                <Nav.Link style={{ fontFamily: 'Crimson Text', fontSize: 20 }}>Messages STRETCH</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}>Messages STRETCH</Nav.Link>
               </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
         <Container id="nav-right" className="nav-outer nav-spacing">
           <SearchBar />
-          <Button variant="outline-dark" onClick={signOut} style={{ fontFamily: 'Crimson Text', fontSize: 18 }}>
-            Sign Out
+          <Button variant="dark" onClick={signOut} className="signoutBtn" style={{ fontSize: 12, backgroundColor: 'maroon' }}>
+            <b><em>Sign Out</em></b>
           </Button>
         </Container>
       </Container>

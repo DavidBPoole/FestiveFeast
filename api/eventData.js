@@ -4,8 +4,27 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL EVENTS
-const getEvents = () => new Promise((resolve, reject) => {
+const getAllEvents = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
+// GET EVENTS BY UID
+const getUserEvents = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/events.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -90,7 +109,9 @@ const getEventSupplies = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getEvents,
+  // getEvents,
+  getAllEvents,
+  getUserEvents,
   createEvent,
   getSingleEvent,
   deleteSingleEvent,

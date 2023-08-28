@@ -5,7 +5,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { getEvents } from '../../api/eventData';
+// MAY NEED TO CHANGE getAllEvents to getUserEvents -> TEST FIRST ***
+import { getAllEvents } from '../../api/eventData';
 import { createSupply, updateSupply } from '../../api/supplyData';
 
 const initialState = {
@@ -33,8 +34,9 @@ function SupplyForm({ supplyObj }) {
   useEffect(() => {
     const isMounted = true;
 
+    // MAY NEED TO CHANGE getAllEvents to getUserEvents -> TEST FIRST ***
     // eslint-disable-next-line no-shadow
-    getEvents(user.uid).then((events) => {
+    getAllEvents(user.uid).then((events) => {
       if (isMounted) {
         setEvents(events);
       }
