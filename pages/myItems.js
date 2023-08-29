@@ -13,7 +13,6 @@ export default function ShowMyItems() {
   const [events, setEvents] = useState([]);
   const [supplies, setSupplies] = useState([]);
   const { user } = useAuth();
-  // const router = useRouter();
 
   const getAllMyEvents = () => {
     getUserEvents(user.uid).then(setEvents);

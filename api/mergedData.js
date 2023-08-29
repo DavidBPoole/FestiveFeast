@@ -1,5 +1,3 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable consistent-return */
 import { getSingleSupply, getSuppliesByEvent, deleteSupply } from './supplyData';
 import { getSingleEvent, deleteSingleEvent } from './eventData';
 

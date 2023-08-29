@@ -4,15 +4,9 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import SupplyCard from '../components/cards/SupplyCard';
 import { getAllSupplies } from '../api/supplyData';
-import { useAuth } from '../utils/context/authContext';
 
 export default function ShowSupplies() {
   const [supplies, setSupplies] = useState([]);
-  // const router = useRouter();
-
-  // GET USER IS USING useAuth HOOK
-  const { user } = useAuth();
-  console.warn(user);
 
   const getAllTheSupplies = () => {
     getAllSupplies().then(setSupplies);
