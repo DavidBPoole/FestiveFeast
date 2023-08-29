@@ -3,9 +3,28 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET SUPPLIES
-const getSupplies = () => new Promise((resolve, reject) => {
+// GET ALL SUPPLIES
+const getAllSupplies = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
+// GET SUPPLIES BY UID
+const getUserSupplies = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/supplies.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -90,7 +109,9 @@ const getSuppliesByEvent = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  getSupplies,
+  // getSupplies,
+  getAllSupplies,
+  getUserSupplies,
   deleteSupply,
   getSingleSupply,
   createSupply,

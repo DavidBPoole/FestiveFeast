@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home Profile</title>
+        <title>Festive Feast</title>
       </Head>
       <div className="homepage-desc-text">
         {/* <h3>This is where the home/welcome page contents will go.</h3> */}
