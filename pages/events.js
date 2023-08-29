@@ -7,13 +7,13 @@ import { getAllEvents } from '../api/eventData';
 
 export default function ShowEvents() {
   const [events, setEvents] = useState([]);
-  // const router = useRouter();
 
   const getAllTheEvents = () => {
     getAllEvents().then(setEvents);
   };
 
   useEffect(() => {
+    document.title = 'Events';
     getAllTheEvents();
   }, []);
 
