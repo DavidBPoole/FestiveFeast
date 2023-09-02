@@ -52,14 +52,10 @@ h1 {
   box-shadow: 5px 5px 10px 1px;
 }
 
-/* .welcome-banner {
-  margin-top: 3%;
-} */
-
 .welcomeBtnContainer {
   align-content: center;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 .welcomeButton {
@@ -182,17 +178,11 @@ h1 {
   margin: 3%;
 }
 
-/* .profileSignoutBtn {
-  box-shadow: 5px 5px 10px 1px;
-  max-width: 8%;
-  border-radius: 45%;
-  text-align: center;
-} */
-
-/* .profileButton {
-  border-radius: 50%;
-  box-shadow: 5px 5px 10px 1px;
-} */
+.profileButton {
+  /* background-color: maroon; */
+  color: gold;
+  box-shadow: 3px 7px 12px 3px grey;
+}
 
 
 /* START Experimental navbar styling for spacing */
