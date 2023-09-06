@@ -1,5 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
 
 html,
 body {
@@ -25,6 +28,10 @@ body {
   background-size: cover; */
 }
 
+.signin-body {
+  font-family: 'Playfair Display', serif;
+}
+
 .navlogo {
   font-family: 'Water Brush', cursive;
   font-size: 3em;;
@@ -44,12 +51,71 @@ h1 {
   font-family: 'Water Brush', cursive;
   font-size: 11em;
   text-shadow: 7px 10px 7px black;
+  max-width: 100%; /* Ensure the text doesn't overflow the carousel */
+}
+
+/* Media queries for responsive font size */
+@media (max-width: 1399px) {
+  .carouselFont {
+    font-size: 10em; /* Adjust font size for smaller screens */
+  }
+}
+
+/* Media queries for responsive font size */
+@media (max-width: 1199px) {
+  .carouselFont {
+    font-size: 8em; /* Adjust font size for smaller screens */
+  }
+}
+
+/* Media queries for responsive font size */
+@media (max-width: 991px) {
+  .carouselFont {
+    font-size: 6em; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .carouselFont {
+    font-size: 4.2em; /* Adjust font size for even smaller screens */
+  }
+}
+
+@media (max-width: 520px) {
+  .carouselFont {
+    font-size: 3em; /* Adjust font size for even smaller screens */
+  }
+}
+
+@media (max-width: 382px) {
+  .carouselFont {
+    font-size: 2.5em; /* Adjust font size for even smaller screens */
+  }
+}
+
+@media (max-width: 340px) {
+  .carouselFont {
+    font-size: 2em; /* Adjust font size for even smaller screens */
+  }
+}
+
+@media (max-width: 299px) {
+  .carouselFont {
+    font-size: 1.7em; /* Adjust font size for even smaller screens */
+  }
 }
 
 .welcomeGalleryImage {
   border-radius: 50%;
   max-width: 98%;
   box-shadow: 5px 5px 10px 1px;
+}
+
+.slogan-body {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  margin-top: 2%;
+  margin-bottom: 2%
 }
 
 .welcomeBtnContainer {
@@ -65,7 +131,7 @@ h1 {
   /* background-color: maroon; */
   color: gold;
   box-shadow: 3px 7px 12px 3px grey;
-  
+  margin-bottom: 2%;
 }
 
 /* Positioning for Festive Feast logo on sign-in page */
@@ -124,8 +190,21 @@ h1 {
   border-radius: 20%;
 }
 
+.form-text {
+  font-family: 'Water Brush', cursive;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
 .events-desc-text {
   margin-bottom: 2%;
+}
+
+.ms-5 {
+  font-family: 'Playfair Display';
+  font-size: 100%;
+  font-weight: bold
 }
 
 .supplyButtonsContainer {
@@ -153,7 +232,9 @@ h1 {
   /* padding: 5%; */
   border-radius: 20%;
   box-shadow: 0px 5px 20px 5px;
-  margin-bottom: 10%
+  margin-bottom: 10%;
+  /* max-width: 100%;
+  overflow: hidden; */
 }
 
 /* For resizing images within supply cards */
@@ -175,33 +256,35 @@ h1 {
 /*  User Profile styling */
 .user-profile {
   text-align: center;
-  margin: 3%;
+  font-family: 'Playfair Display';
+  /* margin: 3%; */
 }
 
 .profileButton {
   /* background-color: maroon; */
   color: gold;
   box-shadow: 3px 7px 12px 3px grey;
+  margin-top: 0.5%;
 }
 
 
 /* START Experimental navbar styling for spacing */
-#feetfirst-nav-outer {
+#festivefeast-nav-outer {
   height: fit-content;
   background-color: transparent;
   padding-top: 16px;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 100;
   backdrop-filter: blur(40px);
 }
 
-#feetfirst-nav {
+#festivefeast-nav {
   max-height: 48px;
   background-color: transparent;
 }
 
-#feetfirst-nav-inner {
+#festivefeast-nav-inner {
   display: flex;
   justify-content: space-between;
 }

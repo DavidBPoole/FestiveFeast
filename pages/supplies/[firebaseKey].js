@@ -23,10 +23,10 @@ export default function ViewSupply() {
       <div className="d-flex flex-column">
         <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ width: '300px' }} />
       </div>
-      <div className="text-black ms-5 details">
-        <h5>
+      <div className="ms-5">
+        <h2>
           {supplyDetails.supplyName}
-        </h5>
+        </h2>
         <hr />
         <p><b>Category:</b> {supplyDetails.supplyCategory}</p>
         <p><b>Allergens:</b> {supplyDetails.supplyAllergens}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
@@ -7,14 +7,22 @@ import { getAllEvents } from '../api/eventData';
 
 export default function ShowEvents() {
   const [events, setEvents] = useState([]);
+  const mountedRef = useRef(true);
 
-  const getAllTheEvents = () => {
-    getAllEvents().then(setEvents);
+  const fetchAllEvents = () => {
+    getAllEvents().then((data) => {
+      if (!mountedRef.current) return;
+      setEvents(data);
+    });
   };
 
   useEffect(() => {
     document.title = 'Events';
-    getAllTheEvents();
+    fetchAllEvents();
+
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
 
   return (
@@ -22,7 +30,6 @@ export default function ShowEvents() {
       <Head>
         <title>Events</title>
       </Head>
-      {/* <div><h2>This is where the events will go.</h2></div> */}
       <div className="eventButtonsContainer">
         <div className="eventsAddEventButton">
           <Link href="/events/new" passHref>
@@ -46,7 +53,7 @@ export default function ShowEvents() {
           <EventCard
             key={event.firebaseKey}
             eventObj={event}
-            onUpdate={getAllTheEvents}
+            onUpdate={fetchAllEvents}
           />
         ))}
       </div>

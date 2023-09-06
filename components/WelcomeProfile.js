@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unescaped-entities */
 // import UserProfile from '../components/User';
-import { useRouter } from 'next/router';
-import { Button, Carousel, Image } from 'react-bootstrap';
+// import { useRouter } from 'next/router';
+import { Carousel, Image } from 'react-bootstrap';
 
-export default function Welcome() {
-  const router = useRouter();
+export default function WelcomeProfile() {
+  // const router = useRouter();
   return (
     <>
       <hr />
@@ -49,26 +48,6 @@ export default function Welcome() {
         </Carousel>
       </div>
       &nbsp;
-      <hr />
-      <div className="slogan-body">
-        <h3><b>Coordinating events, schedules, and holidays couldn't be simpler! With <em>Festive Feast</em> we take the headaches and guesswork out of your next event creating a more seamless and enjoyable festive season.</b></h3>
-        <h3><b>Plan your next family & friends gathering with ease and let's..</b></h3>
-        <h2><b>Feast!</b></h2>
-      </div>
-      <div className="welcomeBtnContainer">
-        <Button
-          variant="dark"
-          type="button"
-          size="lg"
-          className="welcomeButton"
-          style={{ backgroundColor: 'maroon' }}
-          onClick={() => {
-            router.push('/events');
-          }}
-        >
-          <b><em>Plan Your Next Event! &rarr;</em></b>
-        </Button>
-      </div>
       <hr />
     </>
   );

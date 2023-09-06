@@ -18,8 +18,8 @@ function Signin() {
       <div className="signin-logo">
         <img src="/FFLogoLGNoBG.png" width="150%" height="auto" alt="icon" className="nav-logo" />
       </div>
-      <h1>Hi there!</h1>
-      <p>Click below to start planning your next event and let's feast!</p>
+      {/* <h1>Hi there!</h1> */}
+      <p className="signin-body">Click below to start planning your next event and let's feast!</p>
       <Button type="button" size="lg" variant="warning" className="signinBtn" onClick={signIn}>
         Sign In
       </Button>

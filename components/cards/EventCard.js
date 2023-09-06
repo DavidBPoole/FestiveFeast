@@ -32,9 +32,9 @@ export default function EventCard({ eventObj, onUpdate }) {
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2">INFO</Button>
         </Link>
         {/* DYNAMIC LINK FOR A NON-OWNER USER TO JOIN THE EVENT */}
-        <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
+        {/* <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
           JOIN (STRETCH)
-        </Button>
+        </Button> */}
         {/* DYNAMIC LINK TO UPDATE THE EVENT DETAILS  */}
         {isOwner && (
         <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>

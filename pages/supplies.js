@@ -8,13 +8,22 @@ import { getAllSupplies } from '../api/supplyData';
 export default function ShowSupplies() {
   const [supplies, setSupplies] = useState([]);
 
-  const getAllTheSupplies = () => {
-    getAllSupplies().then(setSupplies);
-  };
+  const fetchAllSupplies = () => getAllSupplies().then((data) => {
+    setSupplies(data);
+  });
 
   useEffect(() => {
     document.title = 'Supplies';
-    getAllTheSupplies();
+
+    let isMounted = true;
+
+    if (isMounted) {
+      fetchAllSupplies();
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
@@ -39,7 +48,7 @@ export default function ShowSupplies() {
           <SupplyCard
             key={supply.firebaseKey}
             supplyObj={supply}
-            onUpdate={getAllTheSupplies}
+            onUpdate={fetchAllSupplies}
           />
         ))}
       </div>

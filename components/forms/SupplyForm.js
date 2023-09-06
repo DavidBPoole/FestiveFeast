@@ -119,7 +119,7 @@ function SupplyForm({ supplyObj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
+      <h2 className="form-text">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
 
       {/* EVENT SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="Event">
