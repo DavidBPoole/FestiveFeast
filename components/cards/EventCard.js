@@ -25,26 +25,26 @@ export default function EventCard({ eventObj, onUpdate }) {
     <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
         <Card.Img className="event-img" variant="top" src={eventObj.eventImage} alt={eventObj.eventName} style={{ height: '260px' }} />
-        <Card.Title>{eventObj.eventName}</Card.Title>
-        <Card.Text>{eventObj.eventLocation}</Card.Text>
+        <Card.Title style={{ fontFamily: 'Playfair Display' }}>{eventObj.eventName}</Card.Title>
+        <Card.Text style={{ fontFamily: 'Playfair Display' }}>{eventObj.eventLocation}</Card.Text>
         {/* DYNAMIC VS FILE LINK TO VIEW EVENT DETAILS  */}
         <Link href={`/events/${eventObj.firebaseKey}`} passHref>
-          <Button variant="primary" style={{ borderRadius: 50 }} className="m-2">INFO</Button>
+          <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>
         {/* DYNAMIC LINK FOR A NON-OWNER USER TO JOIN THE EVENT */}
-        <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
+        {/* <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
           JOIN (STRETCH)
-        </Button>
+        </Button> */}
         {/* DYNAMIC LINK TO UPDATE THE EVENT DETAILS  */}
         {isOwner && (
         <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
-          <Button variant="info" style={{ borderRadius: 50 }}>UPDATE</Button>
+          <Button variant="primary" style={{ borderRadius: 50 }}><b><em>UPDATE</em></b></Button>
         </Link>
         )}
         {/* DYNAMIC LINK TO REMOVE THE EVENT */}
         {isOwner && (
         <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisEvent} className="m-2">
-          REMOVE
+          <b><em>REMOVE</em></b>
         </Button>
         )}
       </Card.Body>

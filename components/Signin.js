@@ -18,10 +18,10 @@ function Signin() {
       <div className="signin-logo">
         <img src="/FFLogoLGNoBG.png" width="150%" height="auto" alt="icon" className="nav-logo" />
       </div>
-      <h1>Hi there!</h1>
-      <p>Click the button below to start planning your next event and let's feast!</p>
+      <h1 style={{ color: 'maroon' }}>Hi there!</h1>
+      <h5 className="signin-body">Click below to start planning your next event and let's feast!</h5>
       <Button type="button" size="lg" variant="warning" className="signinBtn" onClick={signIn}>
-        Sign In
+        <b><em>Sign In</em></b>
       </Button>
     </div>
   );

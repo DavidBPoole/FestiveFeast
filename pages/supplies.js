@@ -8,13 +8,22 @@ import { getAllSupplies } from '../api/supplyData';
 export default function ShowSupplies() {
   const [supplies, setSupplies] = useState([]);
 
-  const getAllTheSupplies = () => {
-    getAllSupplies().then(setSupplies);
-  };
+  const fetchAllSupplies = () => getAllSupplies().then((data) => {
+    setSupplies(data);
+  });
 
   useEffect(() => {
     document.title = 'Supplies';
-    getAllTheSupplies();
+
+    let isMounted = true;
+
+    if (isMounted) {
+      fetchAllSupplies();
+    }
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
@@ -22,11 +31,14 @@ export default function ShowSupplies() {
       <Head>
         <title>Supplies</title>
       </Head>
-      {/* <div><h2>This is where the supplies will go.</h2></div> */}
+      <hr />
+      <div className="slogan-body">
+        <h4>Click the button below to create a new supply item to add to an existing event. Be sure to fill out all details.</h4>
+      </div>
       <div className="supplyButtonsContainer">
         <div className="supplyButtons">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}>Add Supply</Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLIES</em></b></Button>
           </Link>
         </div>
       </div>
@@ -39,7 +51,7 @@ export default function ShowSupplies() {
           <SupplyCard
             key={supply.firebaseKey}
             supplyObj={supply}
-            onUpdate={getAllTheSupplies}
+            onUpdate={fetchAllSupplies}
           />
         ))}
       </div>

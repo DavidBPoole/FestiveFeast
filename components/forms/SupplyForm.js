@@ -119,7 +119,7 @@ function SupplyForm({ supplyObj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
+      <h2 className="form-text">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
 
       {/* EVENT SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="Event">
@@ -346,9 +346,10 @@ function SupplyForm({ supplyObj }) {
           required
         />
       </FloatingLabel>
-
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{supplyObj.firebaseKey ? 'Update' : 'Create'} Item</Button>
+      <div className="formButton">
+        <Button type="submit">{supplyObj.firebaseKey ? <b><em>UPDATE</em></b> : <b><em>CREATE</em></b>} <b><em>ITEM</em></b></Button>
+      </div>
     </Form>
   );
 }

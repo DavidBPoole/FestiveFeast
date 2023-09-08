@@ -32,18 +32,21 @@ export default function ShowMyItems() {
       <Head>
         <title>My Events & Supplies</title>
       </Head>
-      {/* <div><h2>This is where user specific events and supplies will go.</h2></div> */}
+      <hr />
+      <div className="slogan-body">
+        <h4>This space belongs to all your events and items. Add another event or item to your existing events or other events.</h4>
+      </div>
       <div className="eventButtonsContainer">
         <div className="eventsAddEventButton">
           <Link href="/events/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>Add Event</em></b></Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD EVENT</em></b></Button>
           </Link>
         </div>
           &nbsp;
           &nbsp;
         <div className="eventsAddSupplyButton">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>Add Supply</em></b></Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLIES</em></b></Button>
           </Link>
         </div>
       </div>
@@ -73,6 +76,7 @@ export default function ShowMyItems() {
           />
         ))}
       </div>
+      <hr />
     </>
   );
 }
