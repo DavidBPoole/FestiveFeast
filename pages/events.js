@@ -30,17 +30,21 @@ export default function ShowEvents() {
       <Head>
         <title>Events</title>
       </Head>
+      <hr />
+      <div className="slogan-body">
+        <h4>Click the buttons below to create a new event or supply item to add to an existing event. Be sure to fill out all details pertaining to your event or event item.</h4>
+      </div>
       <div className="eventButtonsContainer">
         <div className="eventsAddEventButton">
           <Link href="/events/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>Add Event</em></b></Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD EVENT</em></b></Button>
           </Link>
         </div>
           &nbsp;
           &nbsp;
         <div className="eventsAddSupplyButton">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>Add Supply</em></b></Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLY</em></b></Button>
           </Link>
         </div>
       </div>

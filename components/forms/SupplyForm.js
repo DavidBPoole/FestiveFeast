@@ -346,9 +346,10 @@ function SupplyForm({ supplyObj }) {
           required
         />
       </FloatingLabel>
-
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{supplyObj.firebaseKey ? 'Update' : 'Create'} Item</Button>
+      <div className="formButton">
+        <Button type="submit">{supplyObj.firebaseKey ? <b><em>UPDATE</em></b> : <b><em>CREATE</em></b>} <b><em>ITEM</em></b></Button>
+      </div>
     </Form>
   );
 }

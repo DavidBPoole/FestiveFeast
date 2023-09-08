@@ -30,25 +30,25 @@ export default function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav id="festivefeast-nav-inner">
               <Link passHref href="/">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Home</b></Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}><b>Home</b></Nav.Link>
               </Link>
               <Link passHref href="/events">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Events</b></Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}><b>Events</b></Nav.Link>
               </Link>
               <Link passHref href="/supplies">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Supplies</b></Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}><b>Supplies</b></Nav.Link>
               </Link>
               {/* <Link passHref href="/favorites">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}>Community STRETCH</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}>Community STRETCH</Nav.Link>
               </Link> */}
               <Link passHref href="/myItems">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>My Items</b></Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}><b>My Items</b></Nav.Link>
               </Link>
               <Link passHref href="/profile">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}><b>Profile</b></Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Playfair Display', fontSize: 25 }}><b>Profile</b></Nav.Link>
               </Link>
               {/* <Link passHref href="/profile">
-                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 30 }}>Messages STRETCH</Nav.Link>
+                <Nav.Link style={{ fontFamily: 'Water Brush', fontSize: 25 }}>Messages STRETCH</Nav.Link>
               </Link> */}
             </Nav>
           </Navbar.Collapse>
@@ -56,7 +56,7 @@ export default function NavBar() {
         <Container id="nav-right" className="nav-outer nav-spacing">
           {/* <SearchBar /> */}
           <Button variant="dark" onClick={signOut} className="signoutBtn" style={{ fontSize: 12, backgroundColor: 'maroon' }}>
-            <b><em>Sign Out</em></b>
+            <b><em>Sign Out &#9916;</em></b>
           </Button>
         </Container>
       </Container>

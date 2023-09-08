@@ -31,11 +31,14 @@ export default function ShowSupplies() {
       <Head>
         <title>Supplies</title>
       </Head>
-      {/* <div><h2>This is where the supplies will go.</h2></div> */}
+      <hr />
+      <div className="slogan-body">
+        <h4>Click the button below to create a new supply item to add to an existing event. Be sure to fill out all details.</h4>
+      </div>
       <div className="supplyButtonsContainer">
         <div className="supplyButtons">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}>Add Supply</Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLIES</em></b></Button>
           </Link>
         </div>
       </div>

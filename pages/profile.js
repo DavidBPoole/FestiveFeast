@@ -19,6 +19,8 @@ export default function Profile() {
       <div>
         <UserProfile />
       </div>
+      &nbsp;
+      <hr />
     </>
   );
 }

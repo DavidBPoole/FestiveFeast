@@ -52,13 +52,13 @@ function ViewEvent() {
           <p><b>Dietary Restrictions:</b> {eventDetails.sensitivities}</p>
           <p><b>Description:</b> {eventDetails.eventDesc}</p>
           <Link passHref href="/events/">
-            <Button variant="dark">Back to Events</Button>
+            <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Events &#8617;</Button>
           </Link>
         </div>
       </div>
       <hr />
       <Link href="/supplies/new" passHref>
-        <Button>Add Supply</Button>
+        <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon', marginBottom: 5 }}><b><em>Add Supply &#43;</em></b></Button>
       </Link>
       {/* &nbsp;
       <Button variant="warning">Categories Filter Dropdown (STRETCH)</Button> */}

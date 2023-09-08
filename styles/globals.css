@@ -47,6 +47,10 @@ h1 {
   font-family: 'Water Brush', cursive;
 }
 
+h2 {
+  font-family: 'Playfair Display', cursive;
+}
+
 .carouselFont {
   font-family: 'Water Brush', cursive;
   font-size: 11em;
@@ -197,12 +201,16 @@ h1 {
   margin-top: 2%;
 }
 
+.formButton {
+  margin-bottom: 3%;
+}
+
 .events-desc-text {
   margin-bottom: 2%;
 }
 
 .ms-5 {
-  font-family: 'Playfair Display';
+  /* font-family: 'Playfair Display'; */
   font-size: 100%;
   font-weight: bold
 }
@@ -256,8 +264,11 @@ h1 {
 /*  User Profile styling */
 .user-profile {
   text-align: center;
+}
+
+.user-profile-elements {
+  text-align: center;
   font-family: 'Playfair Display';
-  /* margin: 3%; */
 }
 
 .profileButton {
@@ -266,7 +277,6 @@ h1 {
   box-shadow: 3px 7px 12px 3px grey;
   margin-top: 0.5%;
 }
-
 
 /* START Experimental navbar styling for spacing */
 #festivefeast-nav-outer {
