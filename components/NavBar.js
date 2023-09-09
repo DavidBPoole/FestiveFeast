@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 // import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';
-// import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 
 export default function NavBar() {
   // const router = useRouter();
@@ -54,7 +54,7 @@ export default function NavBar() {
           </Navbar.Collapse>
         </Container>
         <Container id="nav-right" className="nav-outer nav-spacing">
-          {/* <SearchBar /> */}
+          <SearchBar />
           <Button variant="dark" onClick={signOut} className="signoutBtn" style={{ fontSize: 12, backgroundColor: 'maroon' }}>
             <b><em>Sign Out &#9916;</em></b>
           </Button>

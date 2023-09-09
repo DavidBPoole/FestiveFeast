@@ -5,7 +5,6 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-// MAY NEED TO CHANGE getAllEvents to getUserEvents -> TEST FIRST ***
 import { getAllEvents } from '../../api/eventData';
 import { createSupply, updateSupply } from '../../api/supplyData';
 
