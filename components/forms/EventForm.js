@@ -19,6 +19,7 @@ const initialState = {
   eventItems: '',
   sensitivities: '',
   eventDesc: '',
+  eventHost: '',
   firebaseKey: '',
 };
 function EventForm({ obj }) {
@@ -166,6 +167,16 @@ function EventForm({ obj }) {
           placeholder="Event description"
           name="eventDesc"
           value={formInput.eventDesc}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Event Host" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Event host"
+          name="eventHost"
+          value={formInput.eventHost}
           onChange={handleChange}
           required
         />
