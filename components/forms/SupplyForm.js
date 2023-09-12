@@ -335,10 +335,10 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
       {/* SUPPLY PROVIDER */}
-      <FloatingLabel controlId="floatingInput3" label="Provider's Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Supplier's Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Name of Provider"
+          placeholder="Name of Supplier"
           name="provider"
           value={formInput.provider}
           onChange={handleChange}

@@ -8,23 +8,20 @@ import EventCard from '../components/cards/EventCard';
 import { getUserEvents } from '../api/eventData';
 import SupplyCard from '../components/cards/SupplyCard';
 import { getUserSupplies } from '../api/supplyData';
+// import { deleteEventSupplies } from '../api/mergedData';
 
 export default function ShowMyItems() {
   const [events, setEvents] = useState([]);
   const [supplies, setSupplies] = useState([]);
   const { user } = useAuth();
 
-  const getAllMyEvents = () => {
+  const getAllMyEventsAndSupplies = () => {
     getUserEvents(user.uid).then(setEvents);
-  };
-
-  const getAllMySupplies = () => {
     getUserSupplies(user.uid).then(setSupplies);
   };
 
   useEffect(() => {
-    getAllMyEvents();
-    getAllMySupplies();
+    getAllMyEventsAndSupplies();
   }, []);
 
   return (
@@ -59,7 +56,7 @@ export default function ShowMyItems() {
           <EventCard
             key={event.firebaseKey}
             eventObj={event}
-            onUpdate={getAllMyEvents}
+            onUpdate={getAllMyEventsAndSupplies}
           />
         ))}
       </div>
@@ -72,7 +69,7 @@ export default function ShowMyItems() {
           <SupplyCard
             key={supply.firebaseKey}
             supplyObj={supply}
-            onUpdate={getAllMySupplies}
+            onUpdate={getAllMyEventsAndSupplies}
           />
         ))}
       </div>
