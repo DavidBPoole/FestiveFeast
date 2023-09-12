@@ -5,7 +5,6 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-// MAY NEED TO CHANGE getAllEvents to getUserEvents -> TEST FIRST ***
 import { getAllEvents } from '../../api/eventData';
 import { createSupply, updateSupply } from '../../api/supplyData';
 
@@ -336,10 +335,10 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
       {/* SUPPLY PROVIDER */}
-      <FloatingLabel controlId="floatingInput3" label="Provider's Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Supplier's Name" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Name of Provider"
+          placeholder="Name of Supplier"
           name="provider"
           value={formInput.provider}
           onChange={handleChange}

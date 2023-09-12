@@ -43,6 +43,7 @@ function ViewEvent() {
           </h2>
           <hr />
           <p><b>Theme:</b> {eventDetails.eventTheme}</p>
+          <p><b>Host:</b> {eventDetails.eventHost}</p>
           <p><b>Location:</b> {eventDetails.eventLocation}</p>
           <p><b>Time:</b> {eventDetails.eventTime}</p>
           <p><b>Date:</b> {eventDetails.eventDate}</p>
