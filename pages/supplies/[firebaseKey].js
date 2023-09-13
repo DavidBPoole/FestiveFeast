@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { viewSupplyDetails } from '../../api/mergedData';
-// import deleteThisSupply  from '../../components/cards/SupplyCard';
+import { viewSupplyDetails, viewEventDetails } from '../../api/mergedData';
 
 export default function ViewSupply() {
   const [supplyDetails, setSupplyDetails] = useState({});
+  const [associatedEvent, setAssociatedEvent] = useState(null);
   const router = useRouter();
 
   // GRAB FIREBASEKEY FROM URL
@@ -15,7 +15,12 @@ export default function ViewSupply() {
 
   // MAKE CALL TO API LAYER TO GET THE SUPPLY DATA
   useEffect(() => {
-    viewSupplyDetails(firebaseKey).then(setSupplyDetails);
+    viewSupplyDetails(firebaseKey).then((supplyData) => {
+      setSupplyDetails(supplyData);
+      if (supplyData.eventId) {
+        viewEventDetails(supplyData.eventId).then(setAssociatedEvent);
+      }
+    });
   }, [firebaseKey]);
 
   return (
@@ -33,6 +38,14 @@ export default function ViewSupply() {
         <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
         <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
         <p><b>Supplier:</b> {supplyDetails.provider}</p>
+
+        {/* Display associated event information if available */}
+        {associatedEvent && (
+          <div>
+            <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+            {/* You can display other event details as needed */}
+          </div>
+        )}
         {/* CHANGE THIS NEXT LINE TO LINK BACK TO RECENT EVENT PAGE BASED ON FIREBASEKEY IF POSSIBLE */}
         <Link passHref href="/events/">
           <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Events &#8617;</Button>
