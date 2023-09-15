@@ -1,22 +1,41 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
-import { viewSupplyDetails } from '../../api/mergedData';
-// import deleteThisSupply  from '../../components/cards/SupplyCard';
+import { viewSupplyDetails, viewEventDetails } from '../../api/mergedData';
+import { deleteSupply } from '../../api/supplyData';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function ViewSupply() {
+  const { user } = useAuth();
   const [supplyDetails, setSupplyDetails] = useState({});
+  const [associatedEvent, setAssociatedEvent] = useState(null);
   const router = useRouter();
 
   // GRAB FIREBASEKEY FROM URL
   const { firebaseKey } = router.query;
 
+  const handleDelete = () => {
+    if (window.confirm(`Delete ${supplyDetails.supplyName}?`)) {
+      deleteSupply(firebaseKey).then(() => {
+        router.push('/supplies');
+      });
+    }
+  };
+
   // MAKE CALL TO API LAYER TO GET THE SUPPLY DATA
   useEffect(() => {
-    viewSupplyDetails(firebaseKey).then(setSupplyDetails);
+    viewSupplyDetails(firebaseKey).then((supplyData) => {
+      setSupplyDetails(supplyData);
+      if (supplyData.eventId) {
+        viewEventDetails(supplyData.eventId).then(setAssociatedEvent);
+      }
+    });
   }, [firebaseKey]);
+
+  const isOwner = user?.uid === supplyDetails.uid;
 
   return (
     <div className="mt-5 d-flex flex-wrap">
@@ -33,7 +52,27 @@ export default function ViewSupply() {
         <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
         <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
         <p><b>Supplier:</b> {supplyDetails.provider}</p>
-        {/* CHANGE THIS NEXT LINE TO LINK BACK TO RECENT EVENT PAGE BASED ON FIREBASEKEY IF POSSIBLE */}
+
+        {/* Display associated event information if available */}
+        {associatedEvent && (
+        <div>
+          <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+        </div>
+        )}
+        <div className="supplyDetailsButtons">
+          {isOwner && (
+            <>
+              <Link href={`/supplies/edit/${firebaseKey}`} passHref>
+                <Button variant="primary" style={{ borderRadius: 50 }}>
+                  <b><em>UPDATE</em></b>
+                </Button>
+              </Link>
+              <Button variant="danger" onClick={handleDelete} className="m-2" style={{ borderRadius: 50 }}>
+                <b><em>REMOVE</em></b>
+              </Button>
+            </>
+          )}
+        </div>
         <Link passHref href="/events/">
           <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Events &#8617;</Button>
         </Link>
@@ -42,13 +81,12 @@ export default function ViewSupply() {
         <Link passHref href="/supplies/">
           <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Supplies &#8617;</Button>
         </Link>
-        {/* SEE IF WE CAN EDIT AND DELETE ITEMS FROM HERE */}
-        {/* <Link href={`/supplies/edit/${supplyObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+        &nbsp;
+        &nbsp;
+        <Link passHref href="/myItems/">
+          <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to My Items &#8617;</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisSupply} className="m-2">
-          DELETE
-        </Button> */}
+        <hr />
       </div>
     </div>
   );

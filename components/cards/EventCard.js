@@ -13,6 +13,14 @@ export default function EventCard({ eventObj, onUpdate }) {
     return null;
   }
 
+  const {
+    eventImage,
+    eventName,
+    eventLocation,
+    firebaseKey,
+    uid,
+  } = eventObj;
+
   const deleteThisEvent = () => {
     if (window.confirm(`Delete ${eventObj.eventName}?`)) {
       deleteEventSupplies(eventObj.firebaseKey)
@@ -25,33 +33,36 @@ export default function EventCard({ eventObj, onUpdate }) {
     }
   };
 
-  const isOwner = user?.uid === eventObj.uid; // This checks to see if the user is the creator/owner
+  const isOwner = user?.uid === uid; // This checks to see if the user is the creator/owner
+
+  const viewLink = `/events/${firebaseKey}`;
+  const editLink = `/events/edit/${firebaseKey}`;
 
   return (
     <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
-        <Card.Img className="event-img" variant="top" src={eventObj.eventImage} alt={eventObj.eventName} style={{ height: '260px' }} />
-        <Card.Title style={{ fontFamily: 'Playfair Display' }}>{eventObj.eventName}</Card.Title>
-        <Card.Text style={{ fontFamily: 'Playfair Display' }}>{eventObj.eventLocation}</Card.Text>
+        <Card.Img className="event-img" variant="top" src={eventImage} alt={eventName} style={{ height: '260px' }} />
+        <Card.Title style={{ fontFamily: 'Playfair Display' }}>{eventName}</Card.Title>
+        <Card.Text style={{ fontFamily: 'Playfair Display' }}>{eventLocation}</Card.Text>
         {/* DYNAMIC VS FILE LINK TO VIEW EVENT DETAILS  */}
-        <Link href={`/events/${eventObj.firebaseKey}`} passHref>
+        <Link href={viewLink} passHref>
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>
         {/* DYNAMIC LINK FOR A NON-OWNER USER TO JOIN THE EVENT */}
         {/* <Button variant="warning" style={{ borderRadius: 50 }} className="m-2">
           JOIN (STRETCH)
         </Button> */}
-        {/* DYNAMIC LINK TO UPDATE THE EVENT DETAILS  */}
         {isOwner && (
-        <Link href={`/events/edit/${eventObj.firebaseKey}`} passHref>
-          <Button variant="primary" style={{ borderRadius: 50 }}><b><em>UPDATE</em></b></Button>
-        </Link>
-        )}
-        {/* DYNAMIC LINK TO REMOVE THE EVENT */}
-        {isOwner && (
-        <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisEvent} className="m-2">
-          <b><em>REMOVE</em></b>
-        </Button>
+          <>
+            {/* DYNAMIC LINK TO UPDATE THE EVENT DETAILS  */}
+            <Link href={editLink} passHref>
+              <Button variant="primary" style={{ borderRadius: 50 }}><b><em>UPDATE</em></b></Button>
+            </Link>
+            {/* DYNAMIC LINK TO REMOVE THE EVENT */}
+            <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisEvent} className="m-2">
+              <b><em>REMOVE</em></b>
+            </Button>
+          </>
         )}
       </Card.Body>
     </Card>
