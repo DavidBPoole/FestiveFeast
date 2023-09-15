@@ -13,36 +13,50 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
     return null;
   }
 
+  const {
+    supplyImage,
+    supplyName,
+    supplyAllergens,
+    provider,
+    firebaseKey,
+    uid,
+  } = supplyObj;
+
   const deleteThisSupply = () => {
     if (window.confirm(`Delete ${supplyObj.supplyName}?`)) {
       deleteSupply(supplyObj.firebaseKey).then(() => onUpdate());
     }
   };
 
-  const isOwner = user?.uid === supplyObj.uid;
+  const isOwner = user?.uid === uid;
+
+  const viewLink = `/supplies/${firebaseKey}`;
+  const editLink = `/supplies/edit/${firebaseKey}`;
 
   return (
     <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
-        <Card.Img className="supply-img" variant="top" src={supplyObj.supplyImage} alt={supplyObj.supplyName} style={{ height: '250px' }} />
-        <Card.Title style={{ fontFamily: 'Playfair Display' }}>{supplyObj.supplyName}</Card.Title>
-        <Card.Text><b>Allergens: </b>{supplyObj.supplyAllergens}</Card.Text>
-        <Card.Text><b>Supplier: </b>{supplyObj.provider}</Card.Text>
+        <Card.Img className="supply-img" variant="top" src={supplyImage} alt={supplyName} style={{ height: '250px' }} />
+        <Card.Title style={{ fontFamily: 'Playfair Display' }}>{supplyName}</Card.Title>
+        <Card.Text><b>Allergens: </b>{supplyAllergens}</Card.Text>
+        <Card.Text><b>Supplier: </b>{provider}</Card.Text>
         {/* DYNAMIC LINK TO VIEW THE SUPPLY DETAILS  */}
-        <Link href={`/supplies/${supplyObj.firebaseKey}`} passHref>
+        <Link href={viewLink} passHref>
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>
         {/* DYNAMIC LINK TO EDIT THE SUPPLY DETAILS  */}
         {isOwner && (
-        <Link href={`/supplies/edit/${supplyObj.firebaseKey}`} passHref>
-          <Button variant="primary" style={{ borderRadius: 50 }}><b><em>UPDATE</em></b></Button>
-        </Link>
-        )}
-        {/* DYNAMIC LINK TO REMOVE THE SUPPLY ITEM  */}
-        {isOwner && (
-        <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisSupply} className="m-2">
-          REMOVE
-        </Button>
+          <>
+            <Link href={editLink} passHref>
+              <Button variant="primary" style={{ borderRadius: 50 }}>
+                <b><em>UPDATE</em></b>
+              </Button>
+            </Link>
+            {/* DYNAMIC LINK TO REMOVE THE SUPPLY ITEM  */}
+            <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisSupply} className="m-2">
+              REMOVE
+            </Button>
+          </>
         )}
       </Card.Body>
     </Card>

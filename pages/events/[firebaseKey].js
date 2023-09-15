@@ -7,8 +7,10 @@ import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import SupplyCard from '../../components/cards/SupplyCard';
 import { viewEventDetails } from '../../api/mergedData';
+import { useAuth } from '../../utils/context/authContext';
 
 function ViewEvent() {
+  const { user } = useAuth();
   const router = useRouter();
   const [eventDetails, setEventDetails] = useState({});
   const { firebaseKey } = router.query;
@@ -31,6 +33,8 @@ function ViewEvent() {
     };
   }, [firebaseKey]);
 
+  const isOwner = user?.uid === eventDetails.uid; // This checks to see if the user is the creator/owner
+
   return (
     <>
       <div className="mt-5 d-flex flex-wrap">
@@ -52,12 +56,34 @@ function ViewEvent() {
           <p><b>Food/Items Needed:</b> {eventDetails.eventItems}</p>
           <p><b>Dietary Restrictions:</b> {eventDetails.sensitivities}</p>
           <p><b>Description:</b> {eventDetails.eventDesc}</p>
+          <div className="eventDetailsButtons">
+            {isOwner && (
+              <>
+                <Link href={`/events/edit/${firebaseKey}`} passHref>
+                  <Button variant="primary" className="m-2" style={{ borderRadius: 50 }}>
+                    <b><em>UPDATE</em></b>
+                  </Button>
+                </Link>
+              </>
+            )}
+          </div>
           <Link passHref href="/events/">
             <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Events &#8617;</Button>
           </Link>
+          &nbsp;
+          &nbsp;
+          <Link passHref href="/supplies/">
+            <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to Supplies &#8617;</Button>
+          </Link>
+          &nbsp;
+          &nbsp;
+          <Link passHref href="/myItems/">
+            <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to My Items &#8617;</Button>
+          </Link>
+          <hr />
         </div>
       </div>
-      <hr />
+      {/* <hr /> */}
       <Link href="/supplies/new" passHref>
         <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon', marginBottom: 5 }}><b><em>Add Supply &#43;</em></b></Button>
       </Link>

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -21,7 +22,19 @@ const initialState = {
   selectedAllergens: [''],
 };
 
-const categories = ['Appetizer', 'Entree', 'Soup', 'Salad', 'Dessert', 'Beverage', 'Main Course', 'Side', 'Equipment', 'Fixtures', 'Entertainment', 'Utility'];
+const categories = [
+  'Appetizer',
+  'Entree',
+  'Soup',
+  'Salad',
+  'Dessert',
+  'Beverage',
+  'Main Course',
+  'Side',
+  'Equipment',
+  'Fixtures',
+  'Entertainment',
+  'Utility'];
 
 function SupplyForm({ supplyObj }) {
   const [formInput, setFormInput] = useState(initialState);
@@ -33,7 +46,6 @@ function SupplyForm({ supplyObj }) {
   useEffect(() => {
     const isMounted = true;
 
-    // MAY NEED TO CHANGE getAllEvents to getUserEvents -> TEST FIRST ***
     // eslint-disable-next-line no-shadow
     getAllEvents(user.uid).then((events) => {
       if (isMounted) {
@@ -79,21 +91,6 @@ function SupplyForm({ supplyObj }) {
       }));
     }
   };
-  // handSubmit before adding category dropdown and allergen checkboxes
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (supplyObj.firebaseKey) {
-  //     updateSupply(formInput).then(() => router.push(`/supplies/${supplyObj.firebaseKey}`));
-  //   } else {
-  //     const payload = { ...formInput, uid: user.uid };
-  //     createSupply(payload).then(({ name }) => {
-  //       const patchPayload = { firebaseKey: name };
-  //       updateSupply(patchPayload).then(() => {
-  //         router.push('/events');
-  //       });
-  //     });
-  //   }
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -105,7 +102,9 @@ function SupplyForm({ supplyObj }) {
     };
 
     if (supplyObj.firebaseKey) {
-      updateSupply(payload).then(() => router.push(`/supplies/${supplyObj.firebaseKey}`));
+      updateSupply(payload).then(() => {
+        router.push(`/supplies/${supplyObj.firebaseKey}`);
+      });
     } else {
       createSupply(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
@@ -194,30 +193,6 @@ function SupplyForm({ supplyObj }) {
           required
         />
       </FloatingLabel>
-
-      {/* SUPPLY/FOOD CATEGORY INPUT (BASIC)
-      <FloatingLabel controlId="floatingInput2" label="Supply / Food Category" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter supply/food category"
-          name="supplyCategory"
-          value={formInput.supplyCategory}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
-
-      {/* SUPPLY/FOOD ALLERGENS INPUT (BASIC)
-       <FloatingLabel controlId="floatingInput2" label="Allergens (if applicable)" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter any allergens"
-          name="supplyAllergens"
-          value={formInput.supplyAllergens}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
 
       <p>Allergens: </p>
       <FloatingLabel controlId="floatingInput2" label="" className="mb-3">
@@ -347,7 +322,9 @@ function SupplyForm({ supplyObj }) {
       </FloatingLabel>
       {/* SUBMIT BUTTON  */}
       <div className="formButton">
-        <Button type="submit">{supplyObj.firebaseKey ? <b><em>UPDATE</em></b> : <b><em>CREATE</em></b>} <b><em>ITEM</em></b></Button>
+        <Button type="submit" variant="primary">
+          {supplyObj.firebaseKey ? <b><em>UPDATE</em></b> : <b><em>CREATE</em></b>} <b><em>ITEM</em></b>
+        </Button>
       </div>
     </Form>
   );
