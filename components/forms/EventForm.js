@@ -44,7 +44,7 @@ function EventForm({ obj }) {
     if (obj.firebaseKey) {
       updateEvent(formInput).then(() => router.push(`/events/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid: user.uid, eventHost: formInput.eventHost };
       console.warn(payload);
       createEvent(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
@@ -171,6 +171,16 @@ function EventForm({ obj }) {
           required
         />
       </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="RSVP" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="RSVP"
+          name="rsvp"
+          value={formInput.rsvp}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Event Host" className="mb-3">
         <Form.Control
           type="text"
@@ -179,6 +189,54 @@ function EventForm({ obj }) {
           value={formInput.eventHost}
           onChange={handleChange}
           required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Phone Number" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Phone Number"
+          name="phoneNumber"
+          value={formInput.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Email" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Email"
+          name="email"
+          value={formInput.email}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Party Size" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Party Size"
+          name="partySize"
+          value={formInput.partySize}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Allergies" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Allergies"
+          name="allergies"
+          value={formInput.allergies}
+          onChange={handleChange}
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput2" label="Supplies Committed" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Supplies"
+          name="suppliesCommitted"
+          value={formInput.suppliesCommitted}
+          onChange={handleChange}
         />
       </FloatingLabel>
       {/* SUBMIT BUTTON  */}
@@ -203,6 +261,13 @@ EventForm.propTypes = {
     sensitivities: PropTypes.string,
     eventDesc: PropTypes.string,
     firebaseKey: PropTypes.string,
+    rsvp: PropTypes.string,
+    eventHost: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    email: PropTypes.string,
+    partySize: PropTypes.string,
+    allergies: PropTypes.string,
+    suppliesCommitted: PropTypes.string,
   }),
 };
 

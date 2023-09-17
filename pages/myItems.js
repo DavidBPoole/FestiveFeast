@@ -8,7 +8,6 @@ import EventCard from '../components/cards/EventCard';
 import { getUserEvents } from '../api/eventData';
 import SupplyCard from '../components/cards/SupplyCard';
 import { getUserSupplies } from '../api/supplyData';
-// import { deleteEventSupplies } from '../api/mergedData';
 
 export default function ShowMyItems() {
   const [events, setEvents] = useState([]);

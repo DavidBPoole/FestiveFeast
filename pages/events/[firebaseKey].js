@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 // import Image from 'next/image';
@@ -5,8 +6,11 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table';
 import SupplyCard from '../../components/cards/SupplyCard';
 import { viewEventDetails } from '../../api/mergedData';
+// FUNCTIONS IMPORTED FROM PARTICIPANTDATA.JS:
+import { getParticipantsByEvent } from '../../api/participantData';
 import { useAuth } from '../../utils/context/authContext';
 
 function ViewEvent() {
@@ -15,12 +19,27 @@ function ViewEvent() {
   const [eventDetails, setEventDetails] = useState({});
   const { firebaseKey } = router.query;
   const mountedRef = useRef(true);
+  const [participants, setParticipants] = useState([]);
+
+  // ORIGINAL SHOWEVENT API CALL:
+  // const showEventDetails = () => {
+  //   viewEventDetails(firebaseKey).then((data) => {
+  //     if (!mountedRef.current) return;
+  //     setEventDetails(data);
+  //   });
+  // };
 
   const showEventDetails = () => {
-    viewEventDetails(firebaseKey).then((data) => {
-      if (!mountedRef.current) return;
-      setEventDetails(data);
-    });
+    Promise.all([viewEventDetails(firebaseKey), getParticipantsByEvent(firebaseKey)]) // Fetch event and participant data
+      .then(([eventData, participantData]) => {
+        if (!mountedRef.current) return;
+        setEventDetails(eventData);
+        setParticipants(participantData); // Update participants state
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -80,8 +99,51 @@ function ViewEvent() {
           <Link passHref href="/myItems/">
             <Button variant="dark" style={{ fontFamily: 'Playfair Display' }}>Back to My Items &#8617;</Button>
           </Link>
-          <hr />
+          {/* <hr /> */}
         </div>
+      </div>
+      <hr />
+      <div className="join-table">
+        <Table responsive="sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>RSVP Confirm</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Party Size</th>
+              <th>Allergies</th>
+              <th>Supplies Committed</th>
+            </tr>
+          </thead>
+          <tbody>
+            {isOwner && (
+              <tr>
+                <td>1</td>
+                <td>{eventDetails.rsvp}</td>
+                <td>{eventDetails.eventHost}</td>
+                <td>{eventDetails.phoneNumber}</td>
+                <td>{eventDetails.email}</td>
+                <td>{eventDetails.partySize}</td>
+                <td>{eventDetails.allergies}</td>
+                <td>{eventDetails.suppliesCommitted}</td>
+              </tr>
+            )}
+            {participants.map((participant, index) => (
+              <tr key={participant.firebaseKey}>
+                <td>{index + 2}</td>
+                <td>Placeholder Confirmation</td>
+                <td>{participant.participant.name}</td>
+                <td>{participant.participant.phone}</td>
+                <td>{participant.participant.email}</td>
+                <td>{participant.participant.partySize}</td>
+                <td>{participant.participant.allergies}</td>
+                <td>{participant.participant.suppliesCommitted}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
       {/* <hr /> */}
       <Link href="/supplies/new" passHref>
