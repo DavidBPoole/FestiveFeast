@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -30,8 +32,9 @@ function ViewEvent() {
     suppliesCommitted: '',
   });
   const [participants, setParticipants] = useState([]);
-  const [isParticipant, setIsParticipant] = useState(false);
+  const [hasJoinedEvent, setHasJoinedEvent] = useState(false);
   const [rsvpChecked, setRsvpChecked] = useState(false);
+  const [modalMode, setModalMode] = useState('join');
 
   const getCurrentUserUid = () => {
     const user = firebase.auth().currentUser;
@@ -45,7 +48,7 @@ function ViewEvent() {
       setParticipants(data);
       const currentUserUid = getCurrentUserUid();
       const userIsParticipant = data.some((participant) => participant.userUid === currentUserUid);
-      setIsParticipant(userIsParticipant);
+      setHasJoinedEvent(userIsParticipant);
     });
   };
 
@@ -57,14 +60,45 @@ function ViewEvent() {
     });
   };
 
-  useEffect(() => {
-    mountedRef.current = true;
-    showEventDetails();
-    loadParticipants();
-    return () => {
-      mountedRef.current = false;
-    };
-  }, [firebaseKey]);
+  const fetchUserParticipantInfo = () => {
+    const currentUserUid = getCurrentUserUid();
+
+    if (!firebaseKey || !currentUserUid) {
+      console.error('firebaseKey or currentUserUid is undefined or empty');
+      return;
+    }
+
+    getEventParticipants(firebaseKey).then((participants) => {
+      const userParticipant = participants.find((participant) => participant.userUid === currentUserUid);
+
+      if (userParticipant) {
+        setParticipantInfo(userParticipant);
+        setRsvpChecked(userParticipant.rsvp === 'Yes');
+      }
+    });
+  };
+
+  const openJoinModal = () => {
+    setModalMode('join');
+    setRsvpChecked(false);
+    setShowModal(true);
+  };
+
+  const openUpdateModal = () => {
+    setModalMode('update');
+    setShowModal(true);
+  };
+
+  const resetParticipantInfo = () => {
+    setParticipantInfo({
+      name: '',
+      phone: '',
+      email: '',
+      partySize: '',
+      allergies: '',
+      suppliesCommitted: '',
+    });
+  };
 
   const handleJoinEvent = async () => {
     const newParticipant = {
@@ -81,8 +115,9 @@ function ViewEvent() {
     try {
       await joinEvent(firebaseKey, newParticipant);
       loadParticipants();
-      setIsParticipant(true);
+      setHasJoinedEvent(true);
       setShowModal(false);
+      resetParticipantInfo();
     } catch (error) {
       console.error('Error joining event:', error);
     }
@@ -93,7 +128,8 @@ function ViewEvent() {
     leaveEvent(firebaseKey)
       .then(() => {
         loadParticipants();
-        setIsParticipant(false);
+        setHasJoinedEvent(false);
+        resetParticipantInfo();
       })
       .catch((error) => {
         console.error('Error leaving event:', error);
@@ -108,18 +144,32 @@ function ViewEvent() {
     }));
   };
 
+  const handleParticipantInfoChange = (e) => {
+    const { name, value } = e.target;
+    setParticipantInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const renderJoinLeaveButton = () => {
-    if (isParticipant) {
+    if (hasJoinedEvent) {
       return (
-        <Button variant="danger" onClick={handleLeaveEvent}>
-          <b><em>LEAVE EVENT</em></b>
-        </Button>
+        <div>
+          <Button variant="danger" style={{ borderRadius: 50 }} onClick={handleLeaveEvent}>
+            <b><em>LEAVE EVENT</em></b>
+          </Button>
+
+          <Button variant="success" style={{ marginLeft: '1%', color: 'white', borderRadius: 50 }} onClick={openUpdateModal}>
+            <b><em>UPDATE EVENT</em></b>
+          </Button>
+        </div>
       );
     }
 
     if (firebaseKey) {
       return (
-        <Button variant="success" onClick={() => setShowModal(true)}>
+        <Button variant="success" style={{ borderRadius: 50 }} onClick={openJoinModal}>
           <b><em>JOIN EVENT</em></b>
         </Button>
       );
@@ -127,6 +177,16 @@ function ViewEvent() {
 
     return null;
   };
+
+  useEffect(() => {
+    mountedRef.current = true;
+    showEventDetails();
+    loadParticipants();
+    fetchUserParticipantInfo();
+    return () => {
+      mountedRef.current = false;
+    };
+  }, [firebaseKey, hasJoinedEvent]);
 
   return (
     <>
@@ -226,7 +286,7 @@ function ViewEvent() {
                 type="text"
                 name="name"
                 value={participantInfo.name}
-                onChange={handleInputChange}
+                onChange={handleParticipantInfoChange}
               />
             </Form.Group>
             <Form.Group controlId="phone">
@@ -277,10 +337,10 @@ function ViewEvent() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleJoinEvent}>
-            <b><em>JOIN</em></b>
+          <Button variant="primary" className="m-2" style={{ borderRadius: 50 }} onClick={handleJoinEvent}>
+            <b><em>{hasJoinedEvent ? 'UPDATE' : 'JOIN'}</em></b>
           </Button>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" className="m-2" style={{ borderRadius: 50 }} onClick={() => setShowModal(false)}>
             <b><em>CANCEL</em></b>
           </Button>
         </Modal.Footer>
