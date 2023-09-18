@@ -1,9 +1,7 @@
 import { clientCredentials } from '../utils/client';
-// API CALLS FOR EVENTS
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL EVENTS
 const getAllEvents = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events.json`, {
     method: 'GET',
@@ -22,7 +20,6 @@ const getAllEvents = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET EVENTS BY UID
 const getUserEvents = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
@@ -41,7 +38,6 @@ const getUserEvents = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// CREATE EVENT
 const createEvent = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events.json`, {
     method: 'POST',
@@ -55,7 +51,6 @@ const createEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SINGLE EVENT
 const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events/${firebaseKey}.json`, {
     method: 'GET',
@@ -68,7 +63,6 @@ const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// DELETE EVENT
 const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -81,7 +75,6 @@ const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// UPDATE EVENT
 const updateEvent = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -95,7 +88,6 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET A SINGLE EVENT'S SUPPLIES
 const getEventSupplies = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json?orderBy="eventId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
@@ -109,7 +101,6 @@ const getEventSupplies = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  // getEvents,
   getAllEvents,
   getUserEvents,
   createEvent,

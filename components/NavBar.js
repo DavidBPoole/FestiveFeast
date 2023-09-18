@@ -8,12 +8,10 @@ import {
   Nav,
   Button,
 } from 'react-bootstrap';
-// import { useRouter } from 'next/router';
 import { signOut } from '../utils/auth';
 import SearchBar from './SearchBar';
 
 export default function NavBar() {
-  // const router = useRouter();
   return (
     <Navbar id="festivefeast-nav-outer" collapseOnSelect expand="lg" variant="light">
       <Container id="festivefeast-nav">

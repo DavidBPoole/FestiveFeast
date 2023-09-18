@@ -1,5 +1,6 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
@@ -8,20 +9,39 @@ import EventCard from '../components/cards/EventCard';
 import { getUserEvents } from '../api/eventData';
 import SupplyCard from '../components/cards/SupplyCard';
 import { getUserSupplies } from '../api/supplyData';
-// import { deleteEventSupplies } from '../api/mergedData';
 
 export default function ShowMyItems() {
   const [events, setEvents] = useState([]);
   const [supplies, setSupplies] = useState([]);
   const { user } = useAuth();
+  const isMounted = useRef(true);
 
   const getAllMyEventsAndSupplies = () => {
-    getUserEvents(user.uid).then(setEvents);
-    getUserSupplies(user.uid).then(setSupplies);
+    getUserEvents(user.uid)
+      .then((events) => {
+        if (isMounted.current) {
+          setEvents(events);
+        }
+      })
+      .catch(() => {
+      });
+    getUserSupplies(user.uid)
+      .then((supplies) => {
+        if (isMounted.current) {
+          setSupplies(supplies);
+        }
+      })
+      .catch(() => {
+      });
   };
 
   useEffect(() => {
+    document.tiutle = 'My Events & Supplies';
     getAllMyEventsAndSupplies();
+
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
 
   return (

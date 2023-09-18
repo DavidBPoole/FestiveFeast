@@ -1,3 +1,6 @@
+/* eslint-disable no-const-assign */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-shadow */
 /* eslint-disable react/require-default-props */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -46,20 +49,18 @@ function SupplyForm({ supplyObj }) {
   useEffect(() => {
     const isMounted = true;
 
-    // eslint-disable-next-line no-shadow
     getAllEvents(user.uid).then((events) => {
       if (isMounted) {
         setEvents(events);
       }
     });
-    // This prevents edit form from defaulting to initial values.
+
     if (supplyObj.firebaseKey) {
       setFormInput(supplyObj);
       setSelectedCategory(supplyObj.supplyCategory);
     }
 
     return () => {
-      // eslint-disable-next-line no-const-assign
       isMounted = false;
     };
   }, [supplyObj, user.uid]);
@@ -97,8 +98,8 @@ function SupplyForm({ supplyObj }) {
     const payload = {
       ...formInput,
       uid: user.uid,
-      supplyAllergens: formInput.selectedAllergens.join(' '), // Convert array to comma-separated string
-      supplyCategory: selectedCategory, // Include selected category
+      supplyAllergens: formInput.selectedAllergens.join(' '),
+      supplyCategory: selectedCategory,
     };
 
     if (supplyObj.firebaseKey) {
@@ -119,7 +120,6 @@ function SupplyForm({ supplyObj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="form-text">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
 
-      {/* EVENT SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="Event">
         <Form.Select
           aria-label="event"
@@ -160,7 +160,6 @@ function SupplyForm({ supplyObj }) {
         </Form.Select>
       </FloatingLabel>
 
-      {/* SUPPLY NAME INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
         <Form.Control
           type="text"
@@ -182,7 +181,6 @@ function SupplyForm({ supplyObj }) {
         />
       </FloatingLabel>
 
-      {/* SUPPLY/FOOD AMOUNT INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Amount (#. lbs, oz)" className="mb-3">
         <Form.Control
           type="text"
@@ -297,7 +295,6 @@ function SupplyForm({ supplyObj }) {
         </div>
       </FloatingLabel>
 
-      {/* SUPPLY DESCRIPTION TEXTAREA  */}
       <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
         <Form.Control
           as="textarea"
@@ -309,7 +306,7 @@ function SupplyForm({ supplyObj }) {
           required
         />
       </FloatingLabel>
-      {/* SUPPLY PROVIDER */}
+
       <FloatingLabel controlId="floatingInput3" label="Supplier's Name" className="mb-3">
         <Form.Control
           type="text"
@@ -320,7 +317,7 @@ function SupplyForm({ supplyObj }) {
           required
         />
       </FloatingLabel>
-      {/* SUBMIT BUTTON  */}
+
       <div className="formButton">
         <Button type="submit" variant="primary">
           {supplyObj.firebaseKey ? <b><em>UPDATE</em></b> : <b><em>CREATE</em></b>} <b><em>ITEM</em></b>
@@ -340,7 +337,6 @@ SupplyForm.propTypes = {
     provider: PropTypes.string,
     eventId: PropTypes.string,
     firebaseKey: PropTypes.string,
-    // eslint-disable-next-line react/forbid-prop-types
     selectedAllergens: PropTypes.array,
   }),
 };

@@ -55,6 +55,7 @@ export default function ShowSupplies() {
           />
         ))}
       </div>
+      <hr />
     </>
   );
 }

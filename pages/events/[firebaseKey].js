@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -32,6 +31,7 @@ function ViewEvent() {
   });
   const [participants, setParticipants] = useState([]);
   const [isParticipant, setIsParticipant] = useState(false);
+  const [rsvpChecked, setRsvpChecked] = useState(false);
 
   const getCurrentUserUid = () => {
     const user = firebase.auth().currentUser;
@@ -39,7 +39,7 @@ function ViewEvent() {
   };
 
   const loadParticipants = () => {
-    if (!firebaseKey) return; // Don't proceed if firebaseKey is not available
+    if (!firebaseKey) return;
     getEventParticipants(firebaseKey).then((data) => {
       if (!mountedRef.current) return;
       setParticipants(data);
@@ -50,7 +50,7 @@ function ViewEvent() {
   };
 
   const showEventDetails = () => {
-    if (!firebaseKey) return; // Don't proceed if firebaseKey is not available
+    if (!firebaseKey) return;
     viewEventDetails(firebaseKey).then((data) => {
       if (!mountedRef.current) return;
       setEventDetails(data);
@@ -70,6 +70,7 @@ function ViewEvent() {
     const newParticipant = {
       ...participantInfo,
       userUid: getCurrentUserUid(),
+      rsvp: rsvpChecked ? 'Yes' : 'No',
     };
 
     if (!firebaseKey) {
@@ -77,26 +78,18 @@ function ViewEvent() {
       return;
     }
 
-    console.warn('Before joinEvent');
-    console.warn('firebaseKey:', firebaseKey);
-    console.warn('newParticipant:', newParticipant);
-
     try {
-      console.warn('Before joinEvent');
       await joinEvent(firebaseKey, newParticipant);
-      console.warn('Join event successful');
       loadParticipants();
       setIsParticipant(true);
       setShowModal(false);
-      console.warn('After joinEvent');
     } catch (error) {
       console.error('Error joining event:', error);
-      // Handle the error here if needed
     }
   };
 
   const handleLeaveEvent = () => {
-    if (!firebaseKey) return; // Don't proceed if firebaseKey is not available
+    if (!firebaseKey) return;
     leaveEvent(firebaseKey)
       .then(() => {
         loadParticipants();
@@ -132,11 +125,12 @@ function ViewEvent() {
       );
     }
 
-    return null; // Return null if firebaseKey is undefined (loading)
+    return null;
   };
 
   return (
     <>
+      <hr />
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column">
           <img className="event-img" src={eventDetails.eventImage} alt={eventDetails.eventName} style={{ width: 'auto' }} />
@@ -200,7 +194,7 @@ function ViewEvent() {
         <tbody>
           {participants.map((participant, index) => (
             <tr key={index}>
-              <td>{participant.rsvp}</td>
+              <td style={{ width: 2, textAlign: 'center' }}>{participant.rsvp === 'Yes' ? '✅' : ''}</td>
               <td>{participant.name}</td>
               <td>{participant.phone}</td>
               <td>{participant.email}</td>
@@ -211,12 +205,21 @@ function ViewEvent() {
           ))}
         </tbody>
       </Table>
+      <hr />
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Join Event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
+            <Form.Group controlId="rsvp">
+              <Form.Check
+                type="checkbox"
+                label="RSVP"
+                checked={rsvpChecked}
+                onChange={() => setRsvpChecked(!rsvpChecked)}
+              />
+            </Form.Group>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -247,7 +250,7 @@ function ViewEvent() {
             <Form.Group controlId="partySize">
               <Form.Label>Party Size</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 name="partySize"
                 value={participantInfo.partySize}
                 onChange={handleInputChange}
