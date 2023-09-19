@@ -86,6 +86,7 @@ function ViewEvent() {
 
   const openUpdateModal = () => {
     setModalMode('update');
+    fetchUserParticipantInfo();
     setShowModal(true);
   };
 
