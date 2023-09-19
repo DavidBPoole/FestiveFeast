@@ -14,7 +14,6 @@ export default function ViewSupply() {
   const [associatedEvent, setAssociatedEvent] = useState(null);
   const router = useRouter();
 
-  // GRAB FIREBASEKEY FROM URL
   const { firebaseKey } = router.query;
 
   const handleDelete = () => {
@@ -25,7 +24,6 @@ export default function ViewSupply() {
     }
   };
 
-  // MAKE CALL TO API LAYER TO GET THE SUPPLY DATA
   useEffect(() => {
     viewSupplyDetails(firebaseKey).then((supplyData) => {
       setSupplyDetails(supplyData);
@@ -53,7 +51,6 @@ export default function ViewSupply() {
         <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
         <p><b>Supplier:</b> {supplyDetails.provider}</p>
 
-        {/* Display associated event information if available */}
         {associatedEvent && (
         <div>
           <p><b>Associated Event:</b> {associatedEvent.eventName}</p>

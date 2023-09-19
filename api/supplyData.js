@@ -1,9 +1,7 @@
 import { clientCredentials } from '../utils/client';
-// API CALLS FOR SUPPLIES
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL SUPPLIES
 const getAllSupplies = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json`, {
     method: 'GET',
@@ -22,7 +20,6 @@ const getAllSupplies = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SUPPLIES BY UID
 const getUserSupplies = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
@@ -41,7 +38,6 @@ const getUserSupplies = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// DELETE SUPPLY
 const deleteSupply = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -54,7 +50,6 @@ const deleteSupply = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SINGLE SUPPLY
 const getSingleSupply = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies/${firebaseKey}.json`, {
     method: 'GET',
@@ -67,7 +62,6 @@ const getSingleSupply = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// CREATE SUPPLY
 const createSupply = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json`, {
     method: 'POST',
@@ -81,7 +75,6 @@ const createSupply = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// UPDATE SUPPLY
 const updateSupply = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -95,7 +88,6 @@ const updateSupply = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// GET SUPPLIES BY EVENT
 const getSuppliesByEvent = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/supplies.json?orderBy="eventId"&equalTo="${firebaseKey}"`, {
     method: 'GET',
@@ -109,7 +101,6 @@ const getSuppliesByEvent = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
-  // getSupplies,
   getAllSupplies,
   getUserSupplies,
   deleteSupply,

@@ -61,6 +61,7 @@ export default function ShowEvents() {
           />
         ))}
       </div>
+      <hr />
     </>
   );
 }

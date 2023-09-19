@@ -1,9 +1,6 @@
-// import UserProfile from '../components/User';
-// import { useRouter } from 'next/router';
 import { Carousel, Image } from 'react-bootstrap';
 
 export default function WelcomeProfile() {
-  // const router = useRouter();
   return (
     <>
       <hr />

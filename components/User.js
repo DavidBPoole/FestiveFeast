@@ -25,7 +25,6 @@ export default function UserProfile() {
           }}
         ><b><em>Sign Out &#9916;</em></b>
         </Button>
-        {/* <hr /> */}
       </div>
     </div>
   );

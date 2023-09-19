@@ -40,11 +40,9 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
         <Card.Title style={{ fontFamily: 'Playfair Display' }}>{supplyName}</Card.Title>
         <Card.Text><b>Allergens: </b>{supplyAllergens}</Card.Text>
         <Card.Text><b>Supplier: </b>{provider}</Card.Text>
-        {/* DYNAMIC LINK TO VIEW THE SUPPLY DETAILS  */}
         <Link href={viewLink} passHref>
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>
-        {/* DYNAMIC LINK TO EDIT THE SUPPLY DETAILS  */}
         {isOwner && (
           <>
             <Link href={editLink} passHref>
@@ -54,7 +52,7 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
             </Link>
             {/* DYNAMIC LINK TO REMOVE THE SUPPLY ITEM  */}
             <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisSupply} className="m-2">
-              REMOVE
+              <b><em>REMOVE</em></b>
             </Button>
           </>
         )}
