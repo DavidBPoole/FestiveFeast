@@ -52,7 +52,7 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
             </Link>
             {/* DYNAMIC LINK TO REMOVE THE SUPPLY ITEM  */}
             <Button variant="danger" style={{ borderRadius: 50 }} onClick={deleteThisSupply} className="m-2">
-              REMOVE
+              <b><em>REMOVE</em></b>
             </Button>
           </>
         )}

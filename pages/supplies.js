@@ -38,7 +38,7 @@ export default function ShowSupplies() {
       <div className="supplyButtonsContainer">
         <div className="supplyButtons">
           <Link href="/supplies/new" passHref>
-            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLIES</em></b></Button>
+            <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon' }}><b><em>ADD SUPPLY</em></b></Button>
           </Link>
         </div>
       </div>

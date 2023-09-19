@@ -156,11 +156,23 @@ function ViewEvent() {
     if (hasJoinedEvent) {
       return (
         <div>
-          <Button variant="danger" style={{ borderRadius: 50 }} onClick={handleLeaveEvent}>
+          <Button
+            variant="danger"
+            size="sm"
+            style={{ borderRadius: 50, marginBottom: 5 }}
+            onClick={handleLeaveEvent}
+          >
             <b><em>LEAVE EVENT</em></b>
           </Button>
 
-          <Button variant="success" style={{ marginLeft: '1%', color: 'white', borderRadius: 50 }} onClick={openUpdateModal}>
+          <Button
+            variant="success"
+            size="sm"
+            style={{
+              marginLeft: '1%', color: 'white', borderRadius: 50, marginBottom: 5,
+            }}
+            onClick={openUpdateModal}
+          >
             <b><em>UPDATE EVENT</em></b>
           </Button>
         </div>
@@ -169,7 +181,12 @@ function ViewEvent() {
 
     if (firebaseKey) {
       return (
-        <Button variant="success" style={{ borderRadius: 50 }} onClick={openJoinModal}>
+        <Button
+          variant="success"
+          size="sm"
+          style={{ borderRadius: 50, marginBottom: 5 }}
+          onClick={openJoinModal}
+        >
           <b><em>JOIN EVENT</em></b>
         </Button>
       );
@@ -237,8 +254,8 @@ function ViewEvent() {
         </div>
       </div>
       <hr />
-      {renderJoinLeaveButton()}
       <h2>Participants</h2>
+      {renderJoinLeaveButton()}
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -346,8 +363,8 @@ function ViewEvent() {
         </Modal.Footer>
       </Modal>
       <Link href="/supplies/new" passHref>
-        <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon', marginBottom: 5 }}>
-          <b><em>Add Supply &#43;</em></b>
+        <Button variant="secondary" className="event-supply-btns" style={{ backgroundColor: 'maroon', marginBottom: 10 }}>
+          <b><em>Add Supply</em></b>
         </Button>
       </Link>
       <div className="d-flex flex-wrap">
@@ -355,6 +372,7 @@ function ViewEvent() {
           <SupplyCard key={supply.firebaseKey} supplyObj={supply} onUpdate={showEventDetails} />
         ))}
       </div>
+      <hr />
     </>
   );
 }
