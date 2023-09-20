@@ -4,11 +4,17 @@ import { getSingleEvent, deleteSingleEvent } from './eventData';
 const viewSupplyDetails = (supplyFirebaseKey) => new Promise((resolve, reject) => {
   getSingleSupply(supplyFirebaseKey)
     .then((supplyObject) => {
-      getSingleEvent(supplyObject.eventId)
-        .then((eventObject) => {
-          resolve({ eventObject, ...supplyObject });
-        });
-    }).catch((error) => reject(error));
+      if (supplyObject && supplyObject.eventId) {
+        getSingleEvent(supplyObject.eventId)
+          .then((eventObject) => {
+            resolve({ eventObject, ...supplyObject });
+          })
+          .catch((error) => reject(error));
+      } else {
+        resolve({ ...supplyObject });
+      }
+    })
+    .catch((error) => reject(error));
 });
 
 const viewEventDetails = (eventFirebaseKey) => new Promise((resolve, reject) => {

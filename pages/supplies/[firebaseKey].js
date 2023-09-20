@@ -14,7 +14,6 @@ export default function ViewSupply() {
   const [associatedEvent, setAssociatedEvent] = useState(null);
   const router = useRouter();
 
-  // GRAB FIREBASEKEY FROM URL
   const { firebaseKey } = router.query;
 
   const handleDelete = () => {
@@ -25,7 +24,6 @@ export default function ViewSupply() {
     }
   };
 
-  // MAKE CALL TO API LAYER TO GET THE SUPPLY DATA
   useEffect(() => {
     viewSupplyDetails(firebaseKey).then((supplyData) => {
       setSupplyDetails(supplyData);
@@ -40,25 +38,26 @@ export default function ViewSupply() {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-        <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ width: '300px' }} />
+        <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ maxWidth: 325, height: 'auto' }} />
       </div>
       <div className="ms-5">
         <h2>
           {supplyDetails.supplyName}
         </h2>
         <hr />
-        <p><b>Category:</b> {supplyDetails.supplyCategory}</p>
-        <p><b>Allergens:</b> {supplyDetails.supplyAllergens}</p>
-        <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
-        <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
-        <p><b>Supplier:</b> {supplyDetails.provider}</p>
+        <div style={{ fontFamily: 'Playfair-Display' }}>
+          <p><b>Category:</b> {supplyDetails.supplyCategory}</p>
+          <p><b>Allergens:</b> {supplyDetails.supplyAllergens}</p>
+          <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
+          <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
+          <p><b>Supplier:</b> {supplyDetails.provider}</p>
 
-        {/* Display associated event information if available */}
-        {associatedEvent && (
-        <div>
-          <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+          {associatedEvent && (
+            <div>
+              <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+            </div>
+          )}
         </div>
-        )}
         <div className="supplyDetailsButtons">
           {isOwner && (
             <>

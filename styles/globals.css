@@ -49,6 +49,8 @@ h1 {
 
 h2 {
   font-family: 'Playfair Display', cursive;
+  /* font-family: 'Playfair-Display'; */
+  font-weight: bold;
 }
 
 .carouselFont {
@@ -189,7 +191,8 @@ h2 {
 }
 
 .form-text {
-  font-family: 'Water Brush', cursive;
+  font-family: 'Playfair Display', serif;
+  /* font-family: 'Water Brush', cursive; */
   font-size: 2.5em;
   font-weight: bold;
   margin-top: 2%;
@@ -204,9 +207,9 @@ h2 {
 }
 
 .ms-5 {
-  /* font-family: 'Playfair Display'; */
-  font-size: 100%;
-  font-weight: bold
+  /* font-family: 'Playfair-Display'; */
+  font-size: 110%;
+  /* font-weight: bold */
 }
 
 .supplyButtonsContainer {
@@ -315,5 +318,8 @@ h2 {
 .search-container {
   margin-top: 5%;
   margin-bottom: 2%;
+}
+
+.search-font {
   font-family: 'Playfair Display', serif;
 }

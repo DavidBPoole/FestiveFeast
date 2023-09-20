@@ -7,14 +7,11 @@ export default function EditSupply() {
   const [editSupplyItem, setEditSupplyItem] = useState({});
   const router = useRouter();
 
-  // GRAB FIREBASEKEY
   const { firebaseKey } = router.query;
 
-  // MAKE CALL TO API TO GET SUPPLY DATA
   useEffect(() => {
     getSingleSupply(firebaseKey).then(setEditSupplyItem);
   }, [firebaseKey]);
 
-  // PASS OBJECT TO FORM
   return (<SupplyForm supplyObj={editSupplyItem} />);
 }
