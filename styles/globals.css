@@ -49,6 +49,8 @@ h1 {
 
 h2 {
   font-family: 'Playfair Display', cursive;
+  /* font-family: 'Playfair-Display'; */
+  font-weight: bold;
 }
 
 .carouselFont {
@@ -205,9 +207,9 @@ h2 {
 }
 
 .ms-5 {
-  /* font-family: 'Playfair Display'; */
-  font-size: 100%;
-  font-weight: bold
+  /* font-family: 'Playfair-Display'; */
+  font-size: 110%;
+  /* font-weight: bold */
 }
 
 .supplyButtonsContainer {

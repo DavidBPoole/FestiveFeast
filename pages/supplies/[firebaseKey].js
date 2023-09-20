@@ -45,17 +45,19 @@ export default function ViewSupply() {
           {supplyDetails.supplyName}
         </h2>
         <hr />
-        <p><b>Category:</b> {supplyDetails.supplyCategory}</p>
-        <p><b>Allergens:</b> {supplyDetails.supplyAllergens}</p>
-        <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
-        <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
-        <p><b>Supplier:</b> {supplyDetails.provider}</p>
+        <div style={{ fontFamily: 'Playfair-Display' }}>
+          <p><b>Category:</b> {supplyDetails.supplyCategory}</p>
+          <p><b>Allergens:</b> {supplyDetails.supplyAllergens}</p>
+          <p><b>Amount:</b> {supplyDetails.supplyAmount}</p>
+          <p><b>Description:</b> {supplyDetails.supplyDesc}</p>
+          <p><b>Supplier:</b> {supplyDetails.provider}</p>
 
-        {associatedEvent && (
-        <div>
-          <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+          {associatedEvent && (
+            <div>
+              <p><b>Associated Event:</b> {associatedEvent.eventName}</p>
+            </div>
+          )}
         </div>
-        )}
         <div className="supplyDetailsButtons">
           {isOwner && (
             <>

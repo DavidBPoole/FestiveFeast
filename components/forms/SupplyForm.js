@@ -120,17 +120,18 @@ function SupplyForm({ supplyObj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="form-text">{supplyObj.firebaseKey ? 'Update' : 'Create'} Supply Item </h2>
 
-      <FloatingLabel controlId="floatingSelect" label="Event">
-        <Form.Select
-          aria-label="event"
-          name="eventId"
-          onChange={handleChange}
-          className="mb-3"
-          value={formInput.eventId}
-          required
-        >
-          <option value="">Select an Event</option>
-          {
+      <div style={{ fontFamily: 'Playfair-Display' }}>
+        <FloatingLabel controlId="floatingSelect" label="Event">
+          <Form.Select
+            aria-label="event"
+            name="eventId"
+            onChange={handleChange}
+            className="mb-3"
+            value={formInput.eventId}
+            required
+          >
+            <option value="">Select an Event</option>
+            {
             events.map((event) => (
               <option
                 key={event.firebaseKey}
@@ -140,183 +141,184 @@ function SupplyForm({ supplyObj }) {
               </option>
             ))
           }
-        </Form.Select>
-      </FloatingLabel>
+          </Form.Select>
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput2" label="Category" className="mb-3">
-        <Form.Select
-          aria-label="Supply/Food Category"
-          name="supplyCategory"
-          onChange={handleCategoryChange}
-          value={selectedCategory}
-          required
-        >
-          <option value="">Select a category</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </Form.Select>
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput2" label="Category" className="mb-3">
+          <Form.Select
+            aria-label="Supply/Food Category"
+            name="supplyCategory"
+            onChange={handleCategoryChange}
+            value={selectedCategory}
+            required
+          >
+            <option value="">Select a category</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </Form.Select>
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter supply/food name"
-          name="supplyName"
-          value={formInput.supplyName}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput1" label="Item Name" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Enter supply/food name"
+            name="supplyName"
+            value={formInput.supplyName}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput1" label="Image URL" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Supply URL Image"
-          name="supplyImage"
-          value={formInput.supplyImage}
-          onChange={handleChange}
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput1" label="Image URL" className="mb-3">
+          <Form.Control
+            type="url"
+            placeholder="Supply URL Image"
+            name="supplyImage"
+            value={formInput.supplyImage}
+            onChange={handleChange}
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput3" label="Amount (#. lbs, oz)" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter amount of supply/food"
-          name="supplyAmount"
-          value={formInput.supplyAmount}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput3" label="Amount (#. lbs, oz)" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Enter amount of supply/food"
+            name="supplyAmount"
+            value={formInput.supplyAmount}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
 
-      <p>Allergens: </p>
-      <FloatingLabel controlId="floatingInput2" label="" className="mb-3">
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="N/A"
-              checked={formInput.selectedAllergens.includes('N/A')}
-              onChange={handleChange}
-            /> N/A
-          </label>
+        <p>Allergens: </p>
+        <FloatingLabel controlId="floatingInput2" label="" className="mb-3">
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="N/A"
+                checked={formInput.selectedAllergens.includes('N/A')}
+                onChange={handleChange}
+              /> N/A
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="None"
-              checked={formInput.selectedAllergens.includes('None')}
-              onChange={handleChange}
-            /> None
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="None"
+                checked={formInput.selectedAllergens.includes('None')}
+                onChange={handleChange}
+              /> None
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Dairy"
-              checked={formInput.selectedAllergens.includes('Dairy')}
-              onChange={handleChange}
-            /> Dairy
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Dairy"
+                checked={formInput.selectedAllergens.includes('Dairy')}
+                onChange={handleChange}
+              /> Dairy
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Egg"
-              checked={formInput.selectedAllergens.includes('Egg')}
-              onChange={handleChange}
-            /> Egg
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Egg"
+                checked={formInput.selectedAllergens.includes('Egg')}
+                onChange={handleChange}
+              /> Egg
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Fish"
-              checked={formInput.selectedAllergens.includes('Fish')}
-              onChange={handleChange}
-            /> Fish
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Fish"
+                checked={formInput.selectedAllergens.includes('Fish')}
+                onChange={handleChange}
+              /> Fish
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Shellfish"
-              checked={formInput.selectedAllergens.includes('Shellfish')}
-              onChange={handleChange}
-            /> Shellfish
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Shellfish"
+                checked={formInput.selectedAllergens.includes('Shellfish')}
+                onChange={handleChange}
+              /> Shellfish
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Nuts"
-              checked={formInput.selectedAllergens.includes('Nuts')}
-              onChange={handleChange}
-            /> Nuts
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Nuts"
+                checked={formInput.selectedAllergens.includes('Nuts')}
+                onChange={handleChange}
+              /> Nuts
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Wheat/Gluten"
-              checked={formInput.selectedAllergens.includes('Wheat/Gluten')}
-              onChange={handleChange}
-            /> Wheat/Gluten
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Wheat/Gluten"
+                checked={formInput.selectedAllergens.includes('Wheat/Gluten')}
+                onChange={handleChange}
+              /> Wheat/Gluten
+            </label>
           &nbsp;
           &nbsp;
-          <label>
-            <input
-              type="checkbox"
-              name="allergen"
-              value="Soy"
-              checked={formInput.selectedAllergens.includes('Soy')}
-              onChange={handleChange}
-            /> Soy
-          </label>
-        </div>
-      </FloatingLabel>
+            <label>
+              <input
+                type="checkbox"
+                name="allergen"
+                value="Soy"
+                checked={formInput.selectedAllergens.includes('Soy')}
+                onChange={handleChange}
+              /> Soy
+            </label>
+          </div>
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
-        <Form.Control
-          as="textarea"
-          placeholder="Description"
-          style={{ height: '100px' }}
-          name="supplyDesc"
-          value={formInput.supplyDesc}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingTextarea" label="Description" className="mb-3">
+          <Form.Control
+            as="textarea"
+            placeholder="Description"
+            style={{ height: '100px' }}
+            name="supplyDesc"
+            value={formInput.supplyDesc}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
 
-      <FloatingLabel controlId="floatingInput3" label="Supplier's Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Name of Supplier"
-          name="provider"
-          value={formInput.provider}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+        <FloatingLabel controlId="floatingInput3" label="Supplier's Name" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Name of Supplier"
+            name="provider"
+            value={formInput.provider}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+      </div>
 
       <div className="formButton">
         <Button type="submit" variant="primary">

@@ -42,8 +42,8 @@ export default function EventCard({ eventObj, onUpdate }) {
     <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
         <Card.Img className="event-img" variant="top" src={eventImage} alt={eventName} style={{ height: '260px' }} />
-        <Card.Title style={{ fontFamily: 'Playfair Display', fontWeight: 'bold' }}>{eventName}</Card.Title>
-        <Card.Text style={{ fontFamily: 'Playfair Display', fontWeight: 'bold' }}>{eventLocation}</Card.Text>
+        <Card.Title style={{ fontFamily: 'Playfair-Display', fontWeight: 'bold' }}>{eventName}</Card.Title>
+        <Card.Text style={{ fontFamily: 'Playfair-Display' }}>{eventLocation}</Card.Text>
         <Link href={viewLink} passHref>
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>

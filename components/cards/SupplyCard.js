@@ -37,9 +37,9 @@ export default function SupplyCard({ supplyObj, onUpdate }) {
     <Card className="cards" style={{ width: '18rem', margin: '5px' }}>
       <Card.Body>
         <Card.Img className="supply-img" variant="top" src={supplyImage} alt={supplyName} style={{ height: '250px' }} />
-        <Card.Title style={{ fontFamily: 'Playfair Display', fontWeight: 'bold' }}>{supplyName}</Card.Title>
-        <Card.Text><b>Allergens: </b>{supplyAllergens}</Card.Text>
-        <Card.Text><b>Supplier: </b>{provider}</Card.Text>
+        <Card.Title style={{ fontFamily: 'Playfair-Display', fontWeight: 'bold' }}>{supplyName}</Card.Title>
+        <Card.Text style={{ fontFamily: 'Playfair-Display' }}><b>Allergens: </b>{supplyAllergens}</Card.Text>
+        <Card.Text style={{ fontFamily: 'Playfair-Display' }}><b>Supplier: </b>{provider}</Card.Text>
         <Link href={viewLink} passHref>
           <Button variant="primary" style={{ borderRadius: 50 }} className="m-2"><b><em>INFO</em></b></Button>
         </Link>

@@ -236,16 +236,18 @@ function ViewEvent() {
             {eventDetails.eventName}
           </h2>
           <hr />
-          <p><b>Theme:</b> {eventDetails.eventTheme}</p>
-          <p><b>Host:</b> {eventDetails.eventHost}</p>
-          <p><b>Location:</b> {eventDetails.eventLocation}</p>
-          <p><b>Time:</b> {eventDetails.eventTime}</p>
-          <p><b>Date:</b> {eventDetails.eventDate}</p>
-          <p><b>RSVP By:</b> {eventDetails.rsvpDate}</p>
-          <p><b>Meal Type:</b> {eventDetails.mealType}</p>
-          <p><b>Food/Items Needed:</b> {eventDetails.eventItems}</p>
-          <p><b>Dietary Restrictions:</b> {eventDetails.sensitivities}</p>
-          <p><b>Description:</b> {eventDetails.eventDesc}</p>
+          <div style={{ fontFamily: 'Playfair-Display' }}>
+            <p><b>Theme:</b> {eventDetails.eventTheme}</p>
+            <p><b>Host:</b> {eventDetails.eventHost}</p>
+            <p><b>Location:</b> {eventDetails.eventLocation}</p>
+            <p><b>Time:</b> {eventDetails.eventTime}</p>
+            <p><b>Date:</b> {eventDetails.eventDate}</p>
+            <p><b>RSVP By:</b> {eventDetails.rsvpDate}</p>
+            <p><b>Meal Type:</b> {eventDetails.mealType}</p>
+            <p><b>Food/Items Needed:</b> {eventDetails.eventItems}</p>
+            <p><b>Dietary Restrictions:</b> {eventDetails.sensitivities}</p>
+            <p><b>Description:</b> {eventDetails.eventDesc}</p>
+          </div>
           <div className="eventDetailsButtons">
             {authUser?.uid === eventDetails.uid && (
               <>
@@ -285,7 +287,7 @@ function ViewEvent() {
       <hr />
       <h2>Participants</h2>
       {renderJoinLeaveButton()}
-      <Table striped bordered hover>
+      <Table striped bordered hover style={{ fontFamily: 'Playfair-Display' }}>
         <thead>
           <tr>
             <th>RSVP</th>
@@ -317,7 +319,7 @@ function ViewEvent() {
           <Modal.Title style={{ fontFamily: 'Playfair Display', fontWeight: 'bold' }}>{modalMode === 'join' ? 'Join Event' : 'Update Event'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form style={{ fontFamily: 'Playfair-Display' }}>
             <Form.Group controlId="rsvp">
               <Form.Check
                 type="checkbox"
