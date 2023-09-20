@@ -42,10 +42,11 @@ export default function SearchResult() {
         <title>Search</title>
       </Head>
       <div className="search-container">
-        <h4>Here are the results...</h4>
+        <h4 style={{ fontFamily: 'Playfair Display' }}><b>Here are the results...</b></h4>
+        <hr />
         <div className="d-flex flex-wrap">
           {searchResults.length === 0
-            ? (<h5 className="pageheaderflexwrap"><b>No items found</b></h5>)
+            ? (<h5 className="pageheaderflexwrap" style={{ fontFamily: 'Playfair Display' }}><b>No items found</b></h5>)
             : (searchResults.map((result) => {
               if (result.eventName) {
                 return <EventCard key={result.firebaseKey} eventObj={result} onUpdate={getSearchResults} />;
@@ -56,6 +57,7 @@ export default function SearchResult() {
             }))}
         </div>
       </div>
+      <hr />
     </div>
   );
 }

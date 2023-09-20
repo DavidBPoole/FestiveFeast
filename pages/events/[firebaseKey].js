@@ -286,7 +286,7 @@ function ViewEvent() {
       <hr />
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Join Event</Modal.Title>
+          <Modal.Title style={{ fontFamily: 'Playfair Display', fontWeight: 'bold' }}>{modalMode === 'join' ? 'Join Event' : 'Update Event'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
