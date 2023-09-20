@@ -1,7 +1,7 @@
 # Festive Feast
 
 # Overview
-This application aims to alleviate the stress and scheduling headaches around holiday or large family events consolidating relevant information, such as dates, location, items, supplies, food, and participant contact information and responsibilities for enhanced tracking and organization of event data all at the user's fingertips at a glance.
+This application aims to alleviate the stress and scheduling headaches experienced around holiday and family events consolidating relevant information, such as dates, location, items, supplies, food, participant contact information and responsibilities for enhanced tracking and organization all at the user's fingertips at a glance.
 
 # Process Flow
 [Wireframes](https://www.figma.com/file/VHsj9bnFvcFg1xLE9zR2Tl/Festive-Feast?type=design&mode=design&t=mTGoGDEbH4vCEz0x-0)
@@ -13,11 +13,11 @@ This application aims to alleviate the stress and scheduling headaches around ho
 [View Project Board](https://github.com/users/DavidBPoole/projects/2)
 
 # User Description
-- a user of this application is someone who desires an easier way to track, organize and view all relevant information for an event at a glance saving them time by not having to track down communications buried in text threads, voicemails, he said/she said conversations or having to discuss with various individuals repeatedly details about a particular event.
+- a user of this application is someone who desires an easier way to track, organize and view relevant information for an event at a glance saving them time by not having to track down communications buried in text threads, voicemails, he said/she said conversations or having to discuss with various individuals repeatedly details about an event.
 - anyone who has a busy schedule
 - anyone who likes time management
 - anyone who prefers a better way to organize holidays and family events
-- anyone who doesnt want to track down individuals or commitments
+- anyone who does not want to track down individuals or commitments
 
 # Features
 - Authenticated registration/sign-in
