@@ -10,7 +10,7 @@ import {
   Button, Modal, Table, Form,
 } from 'react-bootstrap';
 import SupplyCard from '../../components/cards/SupplyCard';
-import { viewEventDetails } from '../../api/mergedData';
+import { viewEventDetails, deleteEventSupplies } from '../../api/mergedData';
 import { useAuth } from '../../utils/context/authContext';
 import { joinEvent, leaveEvent, getEventParticipants } from '../../api/participantData';
 import { firebase } from '../../utils/client';
@@ -58,6 +58,24 @@ function ViewEvent() {
       if (!mountedRef.current) return;
       setEventDetails(data);
     });
+  };
+
+  const handleRemoveEvent = async () => {
+    if (!firebaseKey) {
+      console.error('firebaseKey is undefined or empty');
+      return;
+    }
+
+    if (window.confirm(`Delete ${eventDetails.eventName}?`)) {
+      try {
+        // Delete the event and its supplies
+        await deleteEventSupplies(firebaseKey);
+        // Redirect back to the events page
+        router.push('/events');
+      } catch (error) {
+        console.error('Error removing event:', error);
+      }
+    }
   };
 
   const fetchUserParticipantInfo = () => {
@@ -211,7 +229,7 @@ function ViewEvent() {
       <hr />
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column">
-          <img className="event-img" src={eventDetails.eventImage} alt={eventDetails.eventName} style={{ width: 'auto' }} />
+          <img className="event-img" src={eventDetails.eventImage} alt={eventDetails.eventName} style={{ maxWidth: 250, height: 'auto' }} />
         </div>
         <div className="ms-5">
           <h2>
@@ -236,6 +254,16 @@ function ViewEvent() {
                     <b><em>UPDATE</em></b>
                   </Button>
                 </Link>
+                {/* <Link href="/events/" passHref> */}
+                <Button
+                  variant="danger"
+                  className="m-2"
+                  style={{ borderRadius: 50 }}
+                  onClick={handleRemoveEvent}
+                >
+                  <b><em>REMOVE</em></b>
+                </Button>
+                {/* </Link> */}
               </>
             )}
           </div>

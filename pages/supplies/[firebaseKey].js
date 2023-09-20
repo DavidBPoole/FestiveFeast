@@ -38,7 +38,7 @@ export default function ViewSupply() {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-        <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ width: '300px' }} />
+        <img className="supply-img" src={supplyDetails.supplyImage} alt={supplyDetails.supplyName} style={{ maxWidth: 325, height: 'auto' }} />
       </div>
       <div className="ms-5">
         <h2>
