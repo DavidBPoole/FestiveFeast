@@ -1,4 +1,4 @@
-# Festive Feast
+# Festive Feast [![Netlify Status](https://api.netlify.com/api/v1/badges/6a486635-27ab-4dce-902f-a183c257f856/deploy-status)](https://app.netlify.com/sites/davidbpoole-festive-feast/deploys)
 
 # Overview
 This application aims to alleviate the stress and scheduling headaches experienced around holiday and family events consolidating relevant information, such as dates, location, items, supplies, food, participant contact information and responsibilities for enhanced tracking and organization all at the user's fingertips at a glance.
@@ -6,11 +6,11 @@ This application aims to alleviate the stress and scheduling headaches experienc
 # Process Flow
 [Wireframes](https://www.figma.com/file/VHsj9bnFvcFg1xLE9zR2Tl/Festive-Feast?type=design&mode=design&t=mTGoGDEbH4vCEz0x-0)
 
-# Deployed Project
-[View Demo](https://www.NetlifyLink.com - deployment link will go here)
-
 #Project Board
 [View Project Board](https://github.com/users/DavidBPoole/projects/2)
+
+# Deployed Project Demo
+[View Demo](https://davidbpoole-festive-feast.netlify.app/)
 
 # User Description
 - a user of this application is someone who desires an easier way to track, organize and view relevant information for an event at a glance saving them time by not having to track down communications buried in text threads, voicemails, he said/she said conversations or having to discuss with various individuals repeatedly details about an event.
