@@ -34,6 +34,7 @@ const categories = [
   'Beverage',
   'Main Course',
   'Side',
+  'Condiment',
   'Equipment',
   'Fixtures',
   'Entertainment',

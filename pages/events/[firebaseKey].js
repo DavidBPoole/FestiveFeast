@@ -144,15 +144,20 @@ function ViewEvent() {
 
   const handleLeaveEvent = () => {
     if (!firebaseKey) return;
-    leaveEvent(firebaseKey)
-      .then(() => {
-        loadParticipants();
-        setHasJoinedEvent(false);
-        resetParticipantInfo();
-      })
-      .catch((error) => {
-        console.error('Error leaving event:', error);
-      });
+
+    const confirmLeave = window.confirm('Are you sure you want to leave this event?');
+
+    if (confirmLeave) {
+      leaveEvent(firebaseKey)
+        .then(() => {
+          loadParticipants();
+          setHasJoinedEvent(false);
+          resetParticipantInfo();
+        })
+        .catch((error) => {
+          console.error('Error leaving event:', error);
+        });
+    }
   };
 
   const handleInputChange = (e) => {
