@@ -17,6 +17,24 @@ export default function Welcome() {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={4000}>
+            <Image className="welcomeGalleryImage" src="/feasttable.png" width="1500" height="auto" />
+            <Carousel.Caption>
+              <div className="carouselFont"><em><b>Festive Feast</b></em></div>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={4000}>
+            <Image className="welcomeGalleryImage" src="/factoryFeast.png" width="1500" height="397" />
+            <Carousel.Caption>
+              <div className="carouselFont"><em><b>Festive Feast</b></em></div>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={4000}>
+            <Image className="welcomeGalleryImage" src="/flowersInRain.png" width="1500" height="auto" />
+            <Carousel.Caption>
+              <div className="carouselFont"><em><b>Festive Feast</b></em></div>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={4000}>
             <Image className="welcomeGalleryImage" src="/appetizersImage.png" width="1500" height="auto" />
             <Carousel.Caption>
               <div className="carouselFont"><em><b>Festive Feast</b></em></div>

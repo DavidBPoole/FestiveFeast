@@ -22,10 +22,12 @@ a {
 }
 
 body {
-  background-color: whitesmoke;
-  /* background-image: url("https://img.freepik.com/free-photo/orange-abstract-background-oil-bubble-water-wallpaper_53876-153423.jpg?w=1380&t=st=1693109493~exp=1693110093~hmac=4a132ba00a87251e5fa835f1484c77170db83c908b329d5f05efbbe34122ae7f");
-  background-repeat: no-repeat;
-  background-size: cover; */
+  background-image: url("/graniteWallpaper.png");
+  /* background-color: whitesmoke; */
+  /* background-image: url("https://img.freepik.com/free-photo/orange-abstract-background-oil-bubble-water-wallpaper_53876-153423.jpg?w=1380&t=st=1693109493~exp=1693110093~hmac=4a132ba00a87251e5fa835f1484c77170db83c908b329d5f05efbbe34122ae7f"); */
+  /* background-repeat: no-repeat;
+  background-size: cover;  */
+  background-attachment: fixed;
 }
 
 .signin-body {
