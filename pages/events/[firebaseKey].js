@@ -66,7 +66,7 @@ function ViewEvent() {
       return;
     }
 
-    if (window.confirm(`Delete ${eventDetails.eventName}?`)) {
+    if (window.confirm(`Delete ${eventDetails.eventName} along with all of its supplies? Please first reassign any supplies you wish to save.`)) {
       try {
         // Delete the event and its supplies
         await deleteEventSupplies(firebaseKey);
