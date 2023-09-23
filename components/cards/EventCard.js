@@ -22,7 +22,7 @@ export default function EventCard({ eventObj, onUpdate }) {
   } = eventObj;
 
   const deleteThisEvent = () => {
-    if (window.confirm(`Delete ${eventObj.eventName}?`)) {
+    if (window.confirm(`Delete ${eventObj.eventName} along with all of its supplies? Please first reassign any supplies you wish to save.`)) {
       deleteEventSupplies(eventObj.firebaseKey)
         .then(() => {
           onUpdate();
