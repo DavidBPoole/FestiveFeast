@@ -34,6 +34,117 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
+/* For resizing images within event cards */
+.event-img {
+  /* width: auto;
+  height: 40%; */
+  /* padding: 5%; */
+  border-radius: 20%;
+  box-shadow: 0px 5px 20px 5px;
+  margin-bottom: 10%;
+  /* max-width: 100%;
+  overflow: hidden; */
+}
+
+/* For resizing images within supply cards */
+.supply-img {
+  /* width: auto;
+  max-height: 40%; */
+  /* padding: 5%; */
+  border-radius: 15%;
+  box-shadow: 0px 5px 20px 5px;
+  margin-bottom: 10%
+}
+
+.welcomeButton {
+  text-align: center;
+  align-content: center;
+  color: gold;
+  box-shadow: 3px 7px 12px 3px grey;
+  margin-bottom: 2%;
+}
+
+.signinBtn {
+  background-color: maroon;
+  color: gold;
+  box-shadow: 15px 10px 15px 5px grey;
+  border-radius: 50%;
+  width: 100%;
+}
+
+#userProfilePhoto {
+  border-radius: 20%;
+}
+
+.copy-btn {
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 50%;
+  width: 100%;
+}
+
+/* Styling for buttons on event and supply pages at the top of the page links */
+.event-supply-btns {
+  color: gold;
+}
+
+.eventButtonsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.eventsAddEventButton {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%;
+}
+
+.eventsAddSupplyButton {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%;
+}
+
+.form-text {
+  font-family: 'Playfair Display', serif;
+  /* font-family: 'Water Brush', cursive; */
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+.formButton {
+  margin-bottom: 3%;
+}
+
+.events-desc-text {
+  margin-bottom: 2%;
+}
+
+.ms-5 {
+  /* font-family: 'Playfair-Display'; */
+  font-size: 110%;
+  /* font-weight: bold */
+}
+
+.supplyButtonsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.supplyButtons {
+  box-shadow: 5px 5px 10px 1px;
+  border-radius: 20%
+}
+
+/* Button styling on events cards */
+#eventsCardInfoBtn {
+  box-shadow: 5px 20px 20px 20px;
+  border-radius: 10%;
+  /* max-width: 3rem; */
+}
+
 .navlogo {
   font-family: 'Water Brush', cursive;
   font-size: 3em;;
@@ -130,14 +241,6 @@ h2 {
   margin-top: 3%;
 }
 
-.welcomeButton {
-  text-align: center;
-  align-content: center;
-  color: gold;
-  box-shadow: 3px 7px 12px 3px grey;
-  margin-bottom: 2%;
-}
-
 /* Positioning for Festive Feast logo on sign-in page */
 .signin-logo {
   display: flex;
@@ -149,109 +252,6 @@ h2 {
   border-radius: 50%;
   /* width: 150%;
   height: auto; */
-}
-
-.signinBtn {
-  background-color: maroon;
-  color: gold;
-  box-shadow: 15px 10px 15px 5px grey;
-  border-radius: 50%;
-  width: 100%;
-}
-
-#userProfilePhoto {
-  border-radius: 20%;
-}
-
-.copy-btn {
-  display: flex;
-  justify-content: center;
-  box-shadow: 5px 5px 10px 1px;
-  border-radius: 50%;
-  width: 100%;
-}
-
-/* Styling for buttons on event and supply pages at the top of the page links */
-.event-supply-btns {
-  color: gold;
-}
-
-.eventButtonsContainer {
-  display: flex;
-  justify-content: center;
-  margin: 2%;
-}
-
-.eventsAddEventButton {
-  box-shadow: 5px 5px 10px 1px;
-  border-radius: 20%;
-}
-
-.eventsAddSupplyButton {
-  box-shadow: 5px 5px 10px 1px;
-  border-radius: 20%;
-}
-
-.form-text {
-  font-family: 'Playfair Display', serif;
-  /* font-family: 'Water Brush', cursive; */
-  font-size: 2.5em;
-  font-weight: bold;
-  margin-top: 2%;
-}
-
-.formButton {
-  margin-bottom: 3%;
-}
-
-.events-desc-text {
-  margin-bottom: 2%;
-}
-
-.ms-5 {
-  /* font-family: 'Playfair-Display'; */
-  font-size: 110%;
-  /* font-weight: bold */
-}
-
-.supplyButtonsContainer {
-  display: flex;
-  justify-content: center;
-  margin: 2%;
-}
-
-.supplyButtons {
-  box-shadow: 5px 5px 10px 1px;
-  border-radius: 20%
-}
-
-/* Button styling on events cards */
-#eventsCardInfoBtn {
-  box-shadow: 5px 20px 20px 20px;
-  border-radius: 10%;
-  /* max-width: 3rem; */
-}
-
-/* For resizing images within event cards */
-.event-img {
-  /* width: auto;
-  height: 40%; */
-  /* padding: 5%; */
-  border-radius: 20%;
-  box-shadow: 0px 5px 20px 5px;
-  margin-bottom: 10%;
-  /* max-width: 100%;
-  overflow: hidden; */
-}
-
-/* For resizing images within supply cards */
-.supply-img {
-  /* width: auto;
-  max-height: 40%; */
-  /* padding: 5%; */
-  border-radius: 15%;
-  box-shadow: 0px 5px 20px 5px;
-  margin-bottom: 10%
 }
 
 /* Affects color, sizing and shadows on entire event and supply cards */
