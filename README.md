@@ -1,4 +1,6 @@
-# Festive Feast
+<img width="510" alt="Screenshot 2023-10-06 at 9 54 14 PM" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/c9fb3863-f9d8-439f-acf5-5075aee5f412">
+
+# Festive Feast [![Netlify Status](https://api.netlify.com/api/v1/badges/6a486635-27ab-4dce-902f-a183c257f856/deploy-status)](https://app.netlify.com/sites/davidbpoole-festive-feast/deploys)
 
 # Overview
 This application aims to alleviate the stress and scheduling headaches experienced around holiday and family events consolidating relevant information, such as dates, location, items, supplies, food, participant contact information and responsibilities for enhanced tracking and organization all at the user's fingertips at a glance.
@@ -6,11 +8,11 @@ This application aims to alleviate the stress and scheduling headaches experienc
 # Process Flow
 [Wireframes](https://www.figma.com/file/VHsj9bnFvcFg1xLE9zR2Tl/Festive-Feast?type=design&mode=design&t=mTGoGDEbH4vCEz0x-0)
 
-# Deployed Project
-[View Demo](https://www.NetlifyLink.com - deployment link will go here)
-
 #Project Board
 [View Project Board](https://github.com/users/DavidBPoole/projects/2)
+
+# Deployed Project Demo
+[View Demo](https://davidbpoole-festive-feast.netlify.app/)
 
 # User Description
 - a user of this application is someone who desires an easier way to track, organize and view relevant information for an event at a glance saving them time by not having to track down communications buried in text threads, voicemails, he said/she said conversations or having to discuss with various individuals repeatedly details about an event.
@@ -31,11 +33,30 @@ This application aims to alleviate the stress and scheduling headaches experienc
 - Event Participants Table
 
 # Project Images
+<img width="882" alt="Sign In" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/ddb44fc8-136a-4f1f-851a-07288b136764">
+<img width="1385" alt="Welcome Page" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/290f66e9-bf89-49ce-adca-af3f9531d0d5">
+<img width="1343" alt="Events" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/b9b8d44e-b8fd-4ce1-b395-d35c6f3dd906">
+<img width="1426" alt="Event Information" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/8a1d80be-1bc8-456d-b49e-3102db8f3095">
+<img width="1128" alt="Supplies" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/1b6033bc-4af8-46cf-b4c4-8c2d7419f419">
+<img width="1367" alt="Supply Information" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/7c0d96ed-787b-4b61-b913-7cd08818dbc7">
+<img width="1356" alt="Search Results" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/1c6be797-d0ab-423c-94ca-b4f5f3afdf71">
+<img width="1375" alt="Profile" src="https://github.com/DavidBPoole/FestiveFeast/assets/127453405/b53d37a9-b987-459c-b0b0-e1d933dafa54">
 
 # Contributors
 [David Poole](https://github.com/DavidBPoole)
 
+# Tech Stacks
+ReactJS
+NextJS
+JS6
+CSS3
+HTML5
+Firebase
+Bootstrap
+Figma
+
 ****************************************************************************
+Setup & Instructions
 # React/Next.js Template
 
 [See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
